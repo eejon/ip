@@ -44,10 +44,10 @@ public class Athena {
         System.out.printf("\t   %s\n", task);
     }
 
-    private static void createTask(List<Task> taskList, String name) {
-        Task task = new Task(name);
+    private static void createTask(List<Task> taskList, String label) {
+        Task task = new Task(label);
         taskList.add(task);
-        System.out.printf("\t added new task: %s\n", name);
+        System.out.printf("\t added new task: %s\n", label);
     } 
 
     private static void processCommand() throws IOException {

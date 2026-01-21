@@ -1,55 +1,32 @@
 /**
- * Represents a task with a name, description, and completion status.
+ * Represents a task with a label, description, and completion status.
  * A task can be marked as complete or incomplete.
  */
 public class Task {
-	private boolean isCompleted;
-	private String name;
-	private String description;
+	protected boolean isCompleted;
+	protected String label;
 
 	/**
-	 * Creates a new task with the specified name, defaults no description.
+	 * Creates a new task with the specified label, defaults no description.
 	 * The task is initially marked as not completed.
 	 *
-	 * @param name The name of the task.
+	 * @param label The label of the task.
 	 */
-	public Task(String name) {
-		this.name = name;
-		this.description = "";
+	public Task(String label) {
+		this.label = label;
 		this.isCompleted = false;
 	}
 
-	/**
-	 * Creates a new task with the specified name and description.
-	 * The task is initially marked as not completed.
-	 *
-	 * @param name The name of the task.
-	 * @param description The description of the task.
-	 */
-	public Task(String name, String description) {
-		this.name = name;
-		this.description = description;
-		this.isCompleted = false;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public String getDesc() {
-		return this.description;
+	public String getlabel() {
+		return this.label;
 	}
 
 	public boolean getStatus() {
 		return this.isCompleted;
 	}
 
-	public void changeName(String newName) {
-		this.name = newName;
-	}
-
-	public void editDesc(String body) {
-		this.description = body;
+	public void changelabel(String newlabel) {
+		this.label = newlabel;
 	}
 
 	/**
@@ -84,7 +61,7 @@ public class Task {
 	 */
 	@Override
 	public String toString() {
-		return "[" + getStatusIcon() + "] " + name;
+		return "[" + getStatusIcon() + "] " + label;
 	}
 	
 
