@@ -24,30 +24,55 @@ public class Athena {
         System.out.println(LINE_BREAK);
     }
 
+    // List Function
     private static void printList(List<Task> taskList) {
-        for (int i = 0; i < taskList.size(); ++i) {
-            System.out.printf("\t %d. %s\n", i + 1, taskList.get(i));
+        System.out.println("\t Your campaign stands as follows:");
+        for (int i = 0; i < taskList.size(); i++) {
+            System.out.printf("\t %d.%s\n", i + 1, taskList.get(i));
         }
     }
 
+    // Mark Task Function
     private static void markTask(List<Task> taskList, int idx) {
         Task task = taskList.get(idx);
         task.markDone();
-        System.out.println("\t Conquered. Next objective?");
+        System.out.println("\t Strategy realized. This triumph is recorded:");
         System.out.printf("\t   %s\n", task);
     }
 
+    // Unmark Task Function
     private static void unmarkTask(List<Task> taskList, int idx) {
         Task task = taskList.get(idx);
         task.markNotDone();
-        System.out.println("\t Restored. Focus your efforts here once more.");
+        System.out.println("\t Restored. Focus your efforts here once more:");
         System.out.printf("\t   %s\n", task);
     }
 
-    private static void createTask(List<Task> taskList, String label) {
-        Task task = new Task(label);
+    // Add ToDo Task Function
+    private static void addTodo(List<Task> taskList, String description) {
+        Task task = new Todo(description);
         taskList.add(task);
-        System.out.printf("\t added new task: %s\n", label);
+        System.out.println("\t Understood. A new objective is forged:");
+        System.out.printf("\t   %s\n", task);
+        System.out.printf("\t The record shows %d tasks awaiting your mastery!\n", taskList.size());
+    }
+
+    // Add Deadline Task Function
+    private static void addDeadline(List<Task> taskList, String description, String by) {
+        Task task = new Deadline(description, by);
+        taskList.add(task);
+        System.out.println("\t Understood. A new objective is forged:");
+        System.out.printf("\t   %s\n", task);
+        System.out.printf("\t The record shows %d tasks awaiting your mastery!\n", taskList.size());
+    }
+
+    // Add Event Task Function
+    private static void addEvent(List<Task> taskList, String description, String from, String to) {
+        Task task = new Event(description, from, to);
+        taskList.add(task);
+        System.out.println("\t Understood. A new objective is forged:");
+        System.out.printf("\t   %s\n", task);
+        System.out.printf("\t The record shows %d tasks awaiting your mastery!\n", taskList.size());
     } 
 
     private static void processCommand() throws IOException {
@@ -55,24 +80,35 @@ public class Athena {
         ArrayList<Task> taskList = new ArrayList<>();
         while (true) {
             System.out.print("\t> ");
-            String command = br.readLine();
+            String input = br.readLine();
             System.out.println(LINE_BREAK);
 
-            if (command.equals("list")) {
+            // Handle command variations
+            if (input.equals("list")) { // List
                 printList(taskList);
-            } else if (command.equals("bye")) {
+            } else if (input.equals("bye")) { // Bye
                 break;
-            } else if (command.startsWith("mark ")) {
-                String[] inputs = command.split(" ", 2);
-                int taskIdx = Integer.parseInt(inputs[1]) - 1;
+            } else if (input.startsWith("mark ")) { // Mark
+                String[] arg = input.split(" ");
+                int taskIdx = Integer.parseInt(arg[1]) - 1;
                 markTask(taskList, taskIdx);
-            } else if (command.startsWith("unmark ")) {
-                String[] inputs = command.split(" ", 2);
-                int taskIdx = Integer.parseInt(inputs[1]) - 1;
+            } else if (input.startsWith("unmark ")) { // Unmark
+                String[] arg = input.split(" ");
+                int taskIdx = Integer.parseInt(arg[1]) - 1;
                 unmarkTask(taskList, taskIdx);
-            } else {
-                // Entire input is the task description
-                createTask(taskList, command);
+            } else if (input.startsWith("todo ")) { // Create ToDo Task
+                String description = input.substring(5);
+                addTodo(taskList, description);
+            } else if (input.startsWith("deadline ")) { // Create Deadline Task
+                String task = input.substring(9);
+                String[] args = task.split(" /by ");
+                addDeadline(taskList, args[0], args[1]);
+            } else if (input.startsWith("event ")) { // Create Event Task
+                String task = input.substring(6);
+                String[] args = task.split(" /from | /to ");
+                addEvent(taskList, args[0], args[1], args[2]);
+            } else { // Default Todo task
+                addTodo(taskList, input);
             }
 
             System.out.println(LINE_BREAK);
