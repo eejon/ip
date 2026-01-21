@@ -1,3 +1,4 @@
+package athena.tasks;
 /**
  * Represents a task with a label, description, and completion status.
  * A task can be marked as complete or incomplete.

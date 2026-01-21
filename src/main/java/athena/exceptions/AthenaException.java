@@ -1,3 +1,4 @@
+package athena.exceptions;
 /**
  * Represents exceptions specific to the Athena.
  * Used to handle errors such as incorrect user input
