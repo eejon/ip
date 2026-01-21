@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,34 +15,66 @@ public class Athena {
 
     private static void printGreeting() {
         StringBuilder sb = new StringBuilder(LINE_BREAK).append(LOGO).append(LINE_BREAK);
-        sb.append("\n\t Greetings! I am Athena!\n\t What's on your mind?\n").append(LINE_BREAK);
+        sb.append("\n\t Geetings. I am Athena 🦉.\n\t Which path leads us to victory today? 👑\n").append(LINE_BREAK);
         System.out.println(sb);
     }
 
     private static void printExit() {
-        System.out.println("\t Until next time.");
+        System.out.println("\t Strategy never rests. I shall remain here, watchful. 🦉");
         System.out.println(LINE_BREAK);
     }
 
+    private static void printList(List<Task> taskList) {
+        for (int i = 0; i < taskList.size(); ++i) {
+            System.out.printf("\t %d. %s\n", i + 1, taskList.get(i));
+        }
+    }
+
+    private static void markTask(List<Task> taskList, int idx) {
+        Task task = taskList.get(idx);
+        task.markDone();
+        System.out.println("\t Conquered. Next objective?");
+        System.out.printf("\t   %s\n", task);
+    }
+
+    private static void unmarkTask(List<Task> taskList, int idx) {
+        Task task = taskList.get(idx);
+        task.markNotDone();
+        System.out.println("\t Restored. Focus your efforts here once more.");
+        System.out.printf("\t   %s\n", task);
+    }
+
+    private static void createTask(List<Task> taskList, String name) {
+        Task task = new Task(name);
+        taskList.add(task);
+        System.out.printf("\t added new task: %s\n", name);
+    } 
+
     private static void processCommand() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        ArrayList<String> storage = new ArrayList<>();
+        ArrayList<Task> taskList = new ArrayList<>();
         while (true) {
             System.out.print("\t> ");
             String command = br.readLine();
             System.out.println(LINE_BREAK);
 
-            // Replace echo logic with add and list logic
-            if (command.equals("list")) { 
-                for (int i = 0; i < storage.size(); ++i) {
-                    System.out.printf("\t %d. %s\n", i + 1, storage.get(i));
-                }
-            } else if (!command.equals("bye")) { // handles add logic
-                storage.add(command);
-                System.out.printf("\t added: %s\n", command);
-            } else {
+            if (command.equals("list")) {
+                printList(taskList);
+            } else if (command.equals("bye")) {
                 break;
+            } else if (command.startsWith("mark ")) {
+                String[] inputs = command.split(" ", 2);
+                int taskIdx = Integer.parseInt(inputs[1]) - 1;
+                markTask(taskList, taskIdx);
+            } else if (command.startsWith("unmark ")) {
+                String[] inputs = command.split(" ", 2);
+                int taskIdx = Integer.parseInt(inputs[1]) - 1;
+                unmarkTask(taskList, taskIdx);
+            } else {
+                // Entire input is the task description
+                createTask(taskList, command);
             }
+
             System.out.println(LINE_BREAK);
         }
     }
