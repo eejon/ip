@@ -3,9 +3,9 @@
  * Subclass of Task
  */
 public class Deadline extends Task {
-	protected String duedate;
+    protected String duedate;
 
-	/**
+	  /**
      * Creates a new Deadline task.
      *
      * @param description The description of the deadline task.
