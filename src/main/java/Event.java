@@ -1,0 +1,32 @@
+/**
+ * Represents a task that start at a specific date/time and ends at a 
+ * specific date/time. Subclass of Task.
+ */
+public class Event extends Task {
+    protected String from;
+    protected String to;
+
+    /**
+     * Creates a new Event task.
+     *
+     * @param description The description of the event.
+     * @param from The start date/time.
+     * @param to The end date/time.
+     */
+    public Event(String description, String from, String to) {
+        super(description);
+        this.from = from;
+        this.to = to;
+    }
+
+    /**
+     * Returns a string representation of event task.
+     * Format: [E][status_icon] description (from: start to: end)
+     *
+     * @return String representation of event task.
+     */
+    @Override
+    public String toString() {
+        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
+    }
+}
