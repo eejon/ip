@@ -18,7 +18,7 @@ public abstract class Command {
      *
      * @param taskList The TaskManager object to be acted on.
      * @param ui The UI object to print messages for each command.
-     * @return exit code.
+     * @return exit code 0 for success.
      */
     public abstract int dispatch(TaskManager taskList, UI ui);
 

@@ -29,13 +29,8 @@ public class CreateCommand extends Command {
      */
     @Override
     public int dispatch(TaskManager taskList, UI ui) {
-        try {
-            taskList.addTask(this.task); // TaskManager adds task
-            ui.taskCreated(task, taskList.size()); // UI prints task created message
-            return 0;
-        } catch (IndexOutOfBoundsException e) {
-            ui.showIndexOutOfBoundsError();
-            return -1;
-        }
+        taskList.addTask(this.task); // TaskManager adds task
+        ui.taskCreated(task, taskList.size()); // UI prints task created message
+        return 0;
     }
 }

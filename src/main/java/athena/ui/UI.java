@@ -135,4 +135,16 @@ public class UI {
             "\t The record does not recognize %s. Provide a true integer.\n", 
             nan);
     }
+
+    /**
+     * Prints message for when task is deleted fom list successfully to stdout.
+     * 
+     * @param task The task that was deleted.
+     * @param length The number of tasks in the list.
+     */
+    public void showDeleted(Task task, int length) {
+        System.out.println("\t Struck from the record. The objective is removed:");
+        System.out.printf("\t   %s\n", task);
+        System.out.printf("\t The record shows %d tasks awaiting your mastery!\n", length);
+    }
 }

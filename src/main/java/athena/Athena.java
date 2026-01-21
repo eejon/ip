@@ -39,8 +39,6 @@ public class Athena {
 
                 if (statusCode == 1) {
                     break;
-                } else if (statusCode == -1) {
-                    throw new AthenaException("Strategy stalled. I cannot execute this maneuver.");
                 }
 
             } catch (IOException e) {

@@ -50,6 +50,7 @@ public class TaskManager {
      * Marks task at specified index as complete.
      * 
      * @param index index of task to be marked as complete.
+     * @throws IndexOutOfBoundsException if given index is out of bounds.
      */
     public void markTask(int index) throws IndexOutOfBoundsException {
         this.taskList.get(index).markDone();
@@ -59,8 +60,19 @@ public class TaskManager {
      * Marks tasks at specified index as incomplete.
      * 
      * @param index index of task to be marked as incomplete.
+     * @throws IndexOutOfBoundsException if given index is out of bounds.
      */
     public void unmarkTask(int index) throws IndexOutOfBoundsException {
         this.taskList.get(index).markNotDone();
+    }
+
+    /**
+     * Deletes a task from the task list.
+     * 
+     * @param index index of task to be deleted.
+     * @throws IndexOutOfBoundsException if given index is out of bounds.
+     */
+    public void deleteTask(int index) throws IndexOutOfBoundsException {
+        this.taskList.remove(index);
     }
 }

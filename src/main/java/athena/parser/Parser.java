@@ -2,6 +2,7 @@ package athena.parser;
 
 import athena.commands.Command;
 import athena.commands.CreateCommand;
+import athena.commands.DeleteCommand;
 import athena.commands.ExitCommand;
 import athena.commands.ListCommand;
 import athena.commands.MarkCommand;
@@ -73,6 +74,9 @@ public class Parser {
                 }
                 return new CreateCommand(new Event(args[0], args[1], args[2]));
             }
+
+            case "delete":
+                return new DeleteCommand(Integer.parseInt(arguments) - 1);
 
             default:
                 throw AthenaInvalidCommand.invalidCommand();
