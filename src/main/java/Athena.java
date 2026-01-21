@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,12 +26,20 @@ public class Athena {
 
     private static void processCommand() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        ArrayList<String> storage = new ArrayList<>();
         while (true) {
             System.out.print("\t> ");
             String command = br.readLine();
             System.out.println(LINE_BREAK);
-            if (!command.equals("bye")) {
-                System.out.println("\t" + command);
+
+            // Replace echo logic with add and list logic
+            if (command.equals("list")) { 
+                for (int i = 0; i < storage.size(); ++i) {
+                    System.out.printf("\t %d. %s\n", i + 1, storage.get(i));
+                }
+            } else if (!command.equals("bye")) { // handles add logic
+                storage.add(command);
+                System.out.printf("\t added: %s\n", command);
             } else {
                 break;
             }
