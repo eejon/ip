@@ -1,6 +1,6 @@
 package athena.tasks;
 /**
- * Represents a task with a label, description, and completion status.
+ * Represents a task with a label, and completion status.
  * A task can be marked as complete or incomplete.
  */
 public class Task {
@@ -8,7 +8,7 @@ public class Task {
     protected String label;
 
     /**
-     * Creates a new task with the specified label, defaults no description.
+     * Constructs a new task with the specified label, defaults no description.
      * The task is initially marked as not completed.
      *
      * @param label The label of the task.

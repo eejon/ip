@@ -13,8 +13,21 @@ import athena.tasks.Deadline;
 import athena.tasks.Event;
 import athena.tasks.Todo;
 
+/**
+ * Parses user input and maps them to executable Command objects.
+ * Contains logic to parsing and interpreting user commands and 
+ * arguments for supported commands.
+ */
 public class Parser {
 
+	  /**
+     * Returns command to execute after parsing user input.
+     * 
+     * @param input the user input.
+     * @return the command to be executed.
+     * @throws AthenaException If user input has invalid commands or insufficient arguments.
+     * @throws NumberFormatException If argument is NaN for mark and unmark commands.
+     */
     public static Command parse(String input) throws AthenaException, NumberFormatException {
         // Parse inputs, split into [command, argument(s)]
         String[] inputs = input.trim().split(" ", 2);
@@ -54,7 +67,8 @@ public class Parser {
             case "event": {
                 String[] args = arguments.split(" /from | /to ");
                 // No arguments or no from/to
-                if (args.length < 3 || args[0].trim().isEmpty() || args[1].trim().isEmpty() || args[2].trim().isEmpty()) {
+                if (args.length < 3 || args[0].trim().isEmpty() || args[1].trim().isEmpty() 
+                	|| args[2].trim().isEmpty()) {
                     throw AthenaInvalidArguments.missingEvent();
                 }
                 return new CreateCommand(new Event(args[0], args[1], args[2]));

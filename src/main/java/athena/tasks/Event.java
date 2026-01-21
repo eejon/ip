@@ -8,7 +8,7 @@ public class Event extends Task {
     protected String to;
 
     /**
-     * Creates a new Event task.
+     * Constructs a new Event task.
      *
      * @param description The description of the event.
      * @param from The start date/time.

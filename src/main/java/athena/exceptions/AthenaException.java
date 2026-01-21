@@ -1,12 +1,13 @@
 package athena.exceptions;
 /**
- * Represents exceptions specific to the Athena.
- * Used to handle errors such as incorrect user input
+ * Represents the base exception class for all Athena chatbot -specific exceptions.
+ * This exception is thrown when errors occur during command processing or
+ * user interaction with the Athena chatbot.
  */
 public class AthenaException extends Exception {
     
     /**
-     * Creates a new AthenaException with the specified error message.
+     * Constructs a new AthenaException with the specified error message.
      *
      * @param message The error message explaining what went wrong.
      */

@@ -1,5 +1,9 @@
 package athena.exceptions;
-
+/**
+ * Represents an exception for invalid or missing command arguments.
+ * This exception is thrown when a command is missing required parameters
+ * or when the provided arguments are in an incorrect format.
+ */
 public class AthenaInvalidArguments extends AthenaException {
 
     /* Class level constant error messages */
@@ -14,14 +18,29 @@ public class AthenaInvalidArguments extends AthenaException {
         super(message);
     }
 
+    /**
+     * Factory method to create AthenaInvalidArguments.
+     * 
+     * @return AthenaInvalidArguments exception with invalid todo error message.
+     */
     public static AthenaInvalidArguments missingDesciption() {
         return new AthenaInvalidArguments(INVALID_TODO);
     }
 
+    /**
+     * Factory method to create AthenaInvalidArguments.
+     * 
+     * @return AthenaInvalidArguments exception with invalid deadline error message.
+     */
     public static AthenaInvalidArguments missingDeadline() {
         return new AthenaInvalidArguments(INVALID_DEADLINE);
     }
 
+    /**
+     * Factory method to create AthenaInvalidArguments.
+     * 
+     * @return AthenaInvalidArguments exception with invalid event error message.
+     */
     public static AthenaInvalidArguments missingEvent() {
         return new AthenaInvalidArguments(INVALID_EVENT);
     }

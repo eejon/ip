@@ -6,8 +6,8 @@ package athena.tasks;
 public class Deadline extends Task {
     protected String duedate;
 
-	  /**
-     * Creates a new Deadline task.
+	/**
+     * Constructs a new Deadline task.
      *
      * @param description The description of the deadline task.
      * @param duedate The deadline date/time.

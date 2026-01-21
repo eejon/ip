@@ -4,8 +4,8 @@ package athena.tasks;
  * Subclass of Task
  */
 public class Todo extends Task {
-	 /**
-     * Creates a new Todo task.
+    /**
+     * Constructs a new Todo task.
      *
      * @param description The description of the todo task.
      */
