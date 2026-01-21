@@ -20,7 +20,8 @@ public class Athena {
     }
 
     private static void printExit() {
-        System.out.println("\t Strategy never rests. I shall remain here, watchful. 🦉");
+        System.out.println("\t Strategy never rests. I shall remain here, watchful.");
+        System.out.println("\n\t\t\t\t\t\t\t~Athena 🦉");
         System.out.println(LINE_BREAK);
     }
 
@@ -33,7 +34,7 @@ public class Athena {
     }
 
     // Mark Task Function
-    private static void markTask(List<Task> taskList, int idx) {
+    private static void markTask(List<Task> taskList, int idx) throws IndexOutOfBoundsException {
         Task task = taskList.get(idx);
         task.markDone();
         System.out.println("\t Strategy realized. This triumph is recorded:");
@@ -41,7 +42,7 @@ public class Athena {
     }
 
     // Unmark Task Function
-    private static void unmarkTask(List<Task> taskList, int idx) {
+    private static void unmarkTask(List<Task> taskList, int idx) throws IndexOutOfBoundsException {
         Task task = taskList.get(idx);
         task.markNotDone();
         System.out.println("\t Restored. Focus your efforts here once more:");
@@ -80,38 +81,85 @@ public class Athena {
         ArrayList<Task> taskList = new ArrayList<>();
         while (true) {
             System.out.print("\t> ");
-            String input = br.readLine();
-            System.out.println(LINE_BREAK);
+
+            // Parse inputs, split into [command, argument(s)]
+            String[] inputs = br.readLine().trim().split(" ", 2);
+
+            String command = inputs[0].toLowerCase();
+            String arguments = inputs.length > 1 ? inputs[1] : ""; // default ""
 
             // Handle command variations
-            if (input.equals("list")) { // List
-                printList(taskList);
-            } else if (input.equals("bye")) { // Bye
-                break;
-            } else if (input.startsWith("mark ")) { // Mark
-                String[] arg = input.split(" ");
-                int taskIdx = Integer.parseInt(arg[1]) - 1;
-                markTask(taskList, taskIdx);
-            } else if (input.startsWith("unmark ")) { // Unmark
-                String[] arg = input.split(" ");
-                int taskIdx = Integer.parseInt(arg[1]) - 1;
-                unmarkTask(taskList, taskIdx);
-            } else if (input.startsWith("todo ")) { // Create ToDo Task
-                String description = input.substring(5);
-                addTodo(taskList, description);
-            } else if (input.startsWith("deadline ")) { // Create Deadline Task
-                String task = input.substring(9);
-                String[] args = task.split(" /by ");
-                addDeadline(taskList, args[0], args[1]);
-            } else if (input.startsWith("event ")) { // Create Event Task
-                String task = input.substring(6);
-                String[] args = task.split(" /from | /to ");
-                addEvent(taskList, args[0], args[1], args[2]);
-            } else { // Default Todo task
-                addTodo(taskList, input);
-            }
+            try {
+                switch (command) {
+                case "list": {printList(taskList);
+                    break;
+                }
 
-            System.out.println(LINE_BREAK);
+                case "bye": {
+                    return;
+                }
+
+                case "mark": {
+                    int taskIdx = Integer.parseInt(arguments) - 1;
+                    markTask(taskList, taskIdx);
+                    break;
+                }
+
+                case "unmark": {
+                    int taskIdx = Integer.parseInt(arguments) -1;
+                    unmarkTask(taskList, taskIdx);
+                }
+
+                case "todo": {
+                    // No arguments
+                    if (arguments.isEmpty()) {
+                        throw new AthenaException("\tStrategy requires detail. A todo must have a defined objective.");
+                    }
+                    addTodo(taskList, arguments);
+                    break;
+                }
+
+                case "deadline": {
+                    String[] args = arguments.split(" /by ");
+                    // No arguments or no deadline
+                    if (args.length < 2 || args[0].trim().isEmpty() || args[1].trim().isEmpty()) {
+                        throw new AthenaException("\tStrategy requires detail. A deadline must have a defined objective.");
+                    }
+                    addDeadline(taskList, args[0], args[1]);
+                    break;
+                }
+
+                case "event": {
+                    String[] args = arguments.split(" /from | /to ");
+                    if (args.length < 3 || args[0].trim().isEmpty() || args[1].trim().isEmpty() || args[2].trim().isEmpty()) {
+                        throw new AthenaException("\tStrategy requires detail. An event must have a defined objective.");
+                    }
+                    addEvent(taskList, args[0], args[1], args[2]);
+                    break;
+                }
+
+                default: 
+                    // Handles unrecognized commands
+                    throw new AthenaException("\tI do not recognize that tactic. Speak with clarity.");
+                }
+            } catch (AthenaException e) {
+
+                System.out.println(e.getMessage());
+
+            } catch (NumberFormatException e) {
+
+                System.out.printf("\tThe record does not recognize %s. Provide a true integer.\n", arguments);
+
+            } catch (IndexOutOfBoundsException e) {
+
+                System.out.println("\tYou strike at shadows. There is no task at that position.");
+
+            }
+            finally {
+
+                System.out.println(LINE_BREAK);
+
+            }
         }
     }
 
@@ -119,9 +167,13 @@ public class Athena {
         // Greetings
         printGreeting();
         try {
+            
             processCommand();
+            
         } catch (IOException e) {
+
             System.out.println("I/O Exception Occurred!");
+
         }
         // Exit
         printExit();
