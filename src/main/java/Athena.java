@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Athena {
     /* Class Level Constants */
     private static final String LINE_BREAK = "\t____________________________________________________________\n";
@@ -18,9 +22,29 @@ public class Athena {
         System.out.println(LINE_BREAK);
     }
 
+    private static void processCommand() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        while (true) {
+            System.out.print("\t> ");
+            String command = br.readLine();
+            System.out.println(LINE_BREAK);
+            if (!command.equals("bye")) {
+                System.out.println("\t" + command);
+            } else {
+                break;
+            }
+            System.out.println(LINE_BREAK);
+        }
+    }
+
     public static void main(String[] args) {
         // Greetings
         printGreeting();
+        try {
+            processCommand();
+        } catch (IOException e) {
+            System.out.println("I/O Exception Occurred!");
+        }
         // Exit
         printExit();
     }
