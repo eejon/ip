@@ -1,7 +1,107 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+	____________________________________________________________
+	    ___  __  __                
+	   / _ |/ /_/ /  ___ ___  ___ _
+	  / __ / __/ _ \/ -_) _ \/ _ `/
+	 /_/ |_\__/_//_/\__/_//_/\_,_/ 
+	____________________________________________________________
+
+	 Geetings. I am Athena 🦉.
+	 Which path leads us to victory today? 👑
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Understood. A new objective is forged:
+	   [T][ ] read book
+	 The record shows 1 tasks awaiting your mastery!
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Strategy realized. This triumph is recorded:
+	   [T][X] read book
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Understood. A new objective is forged:
+	   [D][ ] return book (by: June 6th)
+	 The record shows 2 tasks awaiting your mastery!
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Understood. A new objective is forged:
+	   [E][ ] project meeting (from: Aug 6th 2pm to: 4pm)
+	 The record shows 3 tasks awaiting your mastery!
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Understood. A new objective is forged:
+	   [T][ ] join sports club
+	 The record shows 4 tasks awaiting your mastery!
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Strategy realized. This triumph is recorded:
+	   [T][X] join sports club
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Understood. A new objective is forged:
+	   [T][ ] borrow book
+	 The record shows 5 tasks awaiting your mastery!
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Your campaign stands as follows:
+	 1.[T][X] read book
+	 2.[D][ ] return book (by: June 6th)
+	 3.[E][ ] project meeting (from: Aug 6th 2pm to: 4pm)
+	 4.[T][X] join sports club
+	 5.[T][ ] borrow book
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Restored. Focus your efforts here once more:
+	   [T][ ] join sports club
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Restored. Focus your efforts here once more:
+	   [T][ ] read book
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Strategy realized. This triumph is recorded:
+	   [D][X] return book (by: June 6th)
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Strategy realized. This triumph is recorded:
+	   [E][X] project meeting (from: Aug 6th 2pm to: 4pm)
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Your campaign stands as follows:
+	 1.[T][ ] read book
+	 2.[D][X] return book (by: June 6th)
+	 3.[E][X] project meeting (from: Aug 6th 2pm to: 4pm)
+	 4.[T][ ] join sports club
+	 5.[T][ ] borrow book
+	____________________________________________________________
+
+	> 	____________________________________________________________
+
+	 Strategy never rests. I shall remain here, watchful. 🦉
+	____________________________________________________________
 
