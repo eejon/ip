@@ -9,99 +9,131 @@
 	 Which path leads us to victory today? 👑
 	____________________________________________________________
 
-	> 	____________________________________________________________
-
-	 Understood. A new objective is forged:
+	> 	 Understood. A new objective is forged:
 	   [T][ ] read book
 	 The record shows 1 tasks awaiting your mastery!
 	____________________________________________________________
 
-	> 	____________________________________________________________
-
-	 Strategy realized. This triumph is recorded:
-	   [T][X] read book
-	____________________________________________________________
-
-	> 	____________________________________________________________
-
-	 Understood. A new objective is forged:
-	   [D][ ] return book (by: June 6th)
+	> 	 Understood. A new objective is forged:
+	   [T][ ] study for exam
 	 The record shows 2 tasks awaiting your mastery!
 	____________________________________________________________
 
-	> 	____________________________________________________________
-
-	 Understood. A new objective is forged:
-	   [E][ ] project meeting (from: Aug 6th 2pm to: 4pm)
+	> 	 Understood. A new objective is forged:
+	   [D][ ] return book (by: Sunday)
 	 The record shows 3 tasks awaiting your mastery!
 	____________________________________________________________
 
-	> 	____________________________________________________________
-
-	 Understood. A new objective is forged:
-	   [T][ ] join sports club
+	> 	 Understood. A new objective is forged:
+	   [E][ ] team meeting (from: Mon 2pm to: 4pm)
 	 The record shows 4 tasks awaiting your mastery!
 	____________________________________________________________
 
-	> 	____________________________________________________________
-
-	 Strategy realized. This triumph is recorded:
-	   [T][X] join sports club
+	> 	 Your campaign stands as follows:
+	 1.[T][ ] read book
+	 2.[T][ ] study for exam
+	 3.[D][ ] return book (by: Sunday)
+	 4.[E][ ] team meeting (from: Mon 2pm to: 4pm)
 	____________________________________________________________
 
-	> 	____________________________________________________________
-
-	 Understood. A new objective is forged:
-	   [T][ ] borrow book
-	 The record shows 5 tasks awaiting your mastery!
+	> 	 Strategy realized. This triumph is recorded:
+	   [T][X] read book
 	____________________________________________________________
 
-	> 	____________________________________________________________
+	> 	 Strategy realized. This triumph is recorded:
+	   [D][X] return book (by: Sunday)
+	____________________________________________________________
 
-	 Your campaign stands as follows:
+	> 	 Your campaign stands as follows:
 	 1.[T][X] read book
-	 2.[D][ ] return book (by: June 6th)
-	 3.[E][ ] project meeting (from: Aug 6th 2pm to: 4pm)
-	 4.[T][X] join sports club
-	 5.[T][ ] borrow book
+	 2.[T][ ] study for exam
+	 3.[D][X] return book (by: Sunday)
+	 4.[E][ ] team meeting (from: Mon 2pm to: 4pm)
 	____________________________________________________________
 
-	> 	____________________________________________________________
-
-	 Restored. Focus your efforts here once more:
-	   [T][ ] join sports club
-	____________________________________________________________
-
-	> 	____________________________________________________________
-
-	 Restored. Focus your efforts here once more:
+	> 	 Restored. Focus your efforts here once more:
 	   [T][ ] read book
 	____________________________________________________________
 
-	> 	____________________________________________________________
-
-	 Strategy realized. This triumph is recorded:
-	   [D][X] return book (by: June 6th)
-	____________________________________________________________
-
-	> 	____________________________________________________________
-
-	 Strategy realized. This triumph is recorded:
-	   [E][X] project meeting (from: Aug 6th 2pm to: 4pm)
-	____________________________________________________________
-
-	> 	____________________________________________________________
-
-	 Your campaign stands as follows:
+	> 	 Your campaign stands as follows:
 	 1.[T][ ] read book
-	 2.[D][X] return book (by: June 6th)
-	 3.[E][X] project meeting (from: Aug 6th 2pm to: 4pm)
-	 4.[T][ ] join sports club
-	 5.[T][ ] borrow book
+	 2.[T][ ] study for exam
+	 3.[D][X] return book (by: Sunday)
+	 4.[E][ ] team meeting (from: Mon 2pm to: 4pm)
+	____________________________________________________________
+
+	> 	 Struck from the record. The objective is removed:
+	   [T][ ] study for exam
+	 The record shows 3 tasks awaiting your mastery!
+	____________________________________________________________
+
+	> 	 Your campaign stands as follows:
+	 1.[T][ ] read book
+	 2.[D][X] return book (by: Sunday)
+	 3.[E][ ] team meeting (from: Mon 2pm to: 4pm)
+	____________________________________________________________
+
+	> 	 Strategy requires detail. A todo must have a defined objective.
+	____________________________________________________________
+
+	> 	 Strategy requires detail. A deadline must have a defined objective.
+	____________________________________________________________
+
+	> 	 Strategy requires detail. An event must have a defined objective.
+	____________________________________________________________
+
+	> 	 Strategy requires detail. A deadline must have a defined objective.
+	____________________________________________________________
+
+	> 	 Strategy requires detail. An event must have a defined objective.
+	____________________________________________________________
+
+	> 	 Strategy requires detail. A todo must have a defined objective.
+	____________________________________________________________
+
+	> 	 I do not recognize that tactic. Speak with clarity.
+	____________________________________________________________
+
+	> 	 The record does not recognize . Provide a true integer.
+	____________________________________________________________
+
+	> 	 The record does not recognize abc. Provide a true integer.
+	____________________________________________________________
+
+	> 	 You strike at shadows. There is no task at that position.
+	____________________________________________________________
+
+	> 	 The record does not recognize . Provide a true integer.
+	____________________________________________________________
+
+	> 	 The record does not recognize xyz. Provide a true integer.
+	____________________________________________________________
+
+	> 	 You strike at shadows. There is no task at that position.
+	____________________________________________________________
+
+	> 	 The record does not recognize . Provide a true integer.
+	____________________________________________________________
+
+	> 	 You strike at shadows. There is no task at that position.
+	____________________________________________________________
+
+	> 	 Understood. A new objective is forged:
+	   [T][ ] final task
+	 The record shows 4 tasks awaiting your mastery!
+	____________________________________________________________
+
+	> 	 Your campaign stands as follows:
+	 1.[T][ ] read book
+	 2.[D][X] return book (by: Sunday)
+	 3.[E][ ] team meeting (from: Mon 2pm to: 4pm)
+	 4.[T][ ] final task
 	____________________________________________________________
 
 	> 	____________________________________________________________
 
-	 Strategy never rests. I shall remain here, watchful. 🦉
+	 Strategy never rests. I shall remain here, watchful.
+
+							~Athena 🦉
 	____________________________________________________________
 
