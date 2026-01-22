@@ -68,7 +68,7 @@ public class UI {
      * @param listString The formatted string of the list of tasks.
      */
     public void showTaskList(String listString) {
-        System.out.println(listString);
+        System.out.print(listString);
     }
 
     /**

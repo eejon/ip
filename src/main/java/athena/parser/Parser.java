@@ -36,8 +36,8 @@ public class Parser {
         String command = inputs[0].toUpperCase();
         String arguments = inputs.length > 1 ? inputs[1] : ""; // default ""
         
-        CommandType type = CommandType.valueOf(command);
         try {
+            CommandType type = CommandType.valueOf(command);
             switch (type) {
             case LIST:
                 return new ListCommand();
@@ -85,6 +85,8 @@ public class Parser {
             }
         } catch (NumberFormatException e) {
             throw new NumberFormatException(arguments);
+        } catch (IllegalArgumentException e) {
+            throw AthenaInvalidCommand.invalidCommand();
         }
     }
 }
