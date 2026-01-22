@@ -36,27 +36,28 @@ public class Parser {
         String command = inputs[0].toLowerCase();
         String arguments = inputs.length > 1 ? inputs[1] : ""; // default ""
         
+        CommandType type = CommandType.valueOf(command);
         try {
-            switch (command) {
-            case "list":
+            switch (type) {
+            case LIST:
                 return new ListCommand();
             
-            case "bye":
+            case BYE:
                 return new ExitCommand();
             
-            case "mark": 
+            case MARK: 
                 return new MarkCommand(Integer.parseInt(arguments) - 1);
             
-            case "unmark":
+            case UNMARK:
                 return new UnmarkCommand(Integer.parseInt(arguments) - 1);
             
-            case "todo":
+            case TODO:
                 // No arguments
                 if (arguments.isEmpty()) {
                     throw AthenaInvalidArguments.missingDesciption();
                 }
                 return new CreateCommand(new Todo(arguments));
-            case "deadline": {
+            case DEADLINE: {
                 String[] args = arguments.split(" /by ");
                 // No arguments or no deadline
                 if (args.length < 2 || args[0].trim().isEmpty() || args[1].trim().isEmpty()) {
@@ -65,7 +66,7 @@ public class Parser {
                 return new CreateCommand(new Deadline(args[0], args[1]));
             }
 
-            case "event": {
+            case EVENT: {
                 String[] args = arguments.split(" /from | /to ");
                 // No arguments or no from/to
                 if (args.length < 3 || args[0].trim().isEmpty() || args[1].trim().isEmpty() 
@@ -75,7 +76,7 @@ public class Parser {
                 return new CreateCommand(new Event(args[0], args[1], args[2]));
             }
 
-            case "delete":
+            case DELETE:
                 return new DeleteCommand(Integer.parseInt(arguments) - 1);
 
             default:
