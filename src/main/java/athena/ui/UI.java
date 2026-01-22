@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import athena.tasks.Task;
-import athena.tasks.TaskManager;
 /**
  * Handles all interactions with the user.
  * This includes reading user inputs and printing formatted
@@ -66,17 +65,10 @@ public class UI {
     /**
      * Prints all itmes in the list of tasks to stdout.
      * 
-     * @param taskList The task manager object that handles list of tasks.
+     * @param listString The formatted string of the list of tasks.
      */
-    public void showTaskList(TaskManager taskList) {
-        if (taskList.size() == 0) {
-            System.out.println("\t The field is clear. Victory is absolute.");
-            return;
-        }
-        System.out.println("\t Your campaign stands as follows:");
-        for (int i = 0; i < taskList.size(); i++) {
-            System.out.printf("\t %d.%s\n", i + 1, taskList.get(i));
-        }
+    public void showTaskList(String listString) {
+        System.out.println(listString);
     }
 
     /**

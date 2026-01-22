@@ -37,6 +37,20 @@ public class TaskManager {
         return this.taskList.get(index);
     }
 
+    
+    public String iterateList() {
+        StringBuilder sb = new StringBuilder();
+        if (taskList.size() == 0) {
+            sb.append("\t The field is clear. Victory is absolute.\n");
+            return sb.toString();
+        }
+        sb.append("\t Your campaign stands as follows:\n");
+        for (int i = 0; i < taskList.size(); i++) {
+            sb.append(String.format("\t %d.%s\n", i + 1, taskList.get(i)));
+        }
+        return sb.toString();
+    }
+
     /**
      * Adds a task to the task list.
      * 

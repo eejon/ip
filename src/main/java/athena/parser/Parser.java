@@ -33,7 +33,7 @@ public class Parser {
         // Parse inputs, split into [command, argument(s)]
         String[] inputs = input.trim().split(" ", 2);
         
-        String command = inputs[0].toLowerCase();
+        String command = inputs[0].toUpperCase();
         String arguments = inputs.length > 1 ? inputs[1] : ""; // default ""
         
         CommandType type = CommandType.valueOf(command);
