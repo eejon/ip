@@ -30,4 +30,20 @@ public class Event extends Task {
     public String toString() {
         return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
     }
+
+    /**
+     * Returns a string representation of this event task in file storage format.
+     * Format: E | status | description | from-to
+     *
+     * @return String representation for file storage.
+     */
+    @Override
+    public String toFileFormat() {
+        return String.format("E | %s | %s | %s-%s",
+            getStatus() ? "1" : "0",
+            getlabel(),
+            from,
+            to);
+    }
+    
 }

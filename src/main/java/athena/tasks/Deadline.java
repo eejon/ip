@@ -28,4 +28,18 @@ public class Deadline extends Task {
         return "[D]" + super.toString() + " (by: " + duedate + ")";
     }
 
+    /**
+     * Returns a string representation of this deadline task in file storage format.
+     * Format: D | status | description | duedate
+     *
+     * @return String representation for file storage.
+     */
+    @Override
+    public String toFileFormat() {
+        return String.format("D | %s | %s | %s",
+            getStatus() ? "1" : "0",
+            getlabel(),
+            duedate);
+    }
+
 }

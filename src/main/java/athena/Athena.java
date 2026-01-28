@@ -5,6 +5,7 @@ import java.io.IOException;
 import athena.commands.Command;
 import athena.exceptions.AthenaException;
 import athena.parser.Parser;
+import athena.storage.TaskStorage;
 import athena.tasks.TaskManager;
 import athena.ui.UI;
 /**
@@ -15,6 +16,7 @@ import athena.ui.UI;
 public class Athena {
     private TaskManager taskList;
     private UI ui;
+    private TaskStorage storage;
 
     /**
      * Constructs a new Athena Chatbot object
@@ -22,14 +24,23 @@ public class Athena {
      */
     public Athena() {
         this.ui = new UI(); // Load UI
-        this.taskList = new TaskManager(); // Load TaskManager
+        this.storage = new TaskStorage();
+        this.taskList = new TaskManager(storage); // Load TaskManager
     }
 
     /**
-     * Execution of the main logic for Athena chatbot. 
+     * Execution of the main logic for Athena chatbot.
      */
     public void run() {
         ui.printGreeting();
+
+        // Load tasks once at startup
+        try {
+            this.taskList.loadTasks();
+        } catch (IOException e) {
+            ui.showError("Error loading tasks: " + e.getMessage());
+        }
+
         while (true) {
             try {
                 String input = ui.readInput();
