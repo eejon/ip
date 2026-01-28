@@ -14,6 +14,7 @@ import athena.commands.UnmarkCommand;
 import athena.exceptions.AthenaException;
 import athena.exceptions.AthenaInvalidArguments;
 import athena.exceptions.AthenaInvalidCommand;
+import athena.exceptions.AthenaInvalidDate;
 import athena.tasks.Deadline;
 import athena.tasks.Event;
 import athena.tasks.Todo;
@@ -72,7 +73,7 @@ public class Parser {
                     LocalDate dueDate = LocalDate.parse(args[1].trim(), DATE_FORMAT);
                     return new CreateCommand(new Deadline(args[0].trim(), dueDate));
                 } catch (DateTimeParseException e) {
-                    throw new AthenaException("Invalid date format. Please use yyyy-MM-dd (e.g., 2019-10-15)");
+                    throw AthenaInvalidDate.invalidDate();
                 }
             }
 
@@ -88,7 +89,7 @@ public class Parser {
                     LocalDate to = LocalDate.parse(args[2].trim(), DATE_FORMAT);
                     return new CreateCommand(new Event(args[0].trim(), from, to));
                 } catch (DateTimeParseException e) {
-                    throw new AthenaException("Invalid date format. Please use yyyy-MM-dd (e.g., 2019-10-15)");
+                    throw AthenaInvalidDate.invalidDate();
                 }
             }
 
