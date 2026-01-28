@@ -8,7 +8,7 @@ import athena.tasks.TaskManager;
  * Represents a command to create and add a new task to the task list.
  */
 public class CreateCommand extends Command {
-    private final Task task; // 1 task per command, cannot be changed
+    private Task task; // 1 task per command, cannot be changed
 
     /**
      * Constructs a new CreateCommand object.

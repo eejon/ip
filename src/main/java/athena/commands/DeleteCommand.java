@@ -7,7 +7,7 @@ import athena.ui.UI;
  * Represents a command to create and add a new task to the task list.
  */
 public class DeleteCommand extends Command {
-    private final int index; 
+    private int index; 
 
     /**
      * Constructs a new DeleteCommand object.
