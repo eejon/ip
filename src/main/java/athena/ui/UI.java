@@ -151,7 +151,7 @@ public class UI {
         if (tasks.isEmpty()) {
             System.out.println("\t The archives reveal no tasks containing \"" + keyword + "\".");
         } else {
-            System.out.println("\t Here are the matching tasks in your list:");
+            System.out.println("\t I have scoured the scrolls. Here is the knowledge you seek:");
             for (int i = 0; i < tasks.size(); i++) {
                 System.out.printf("\t %d.%s\n", i + 1, tasks.get(i));
             }
