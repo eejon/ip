@@ -21,3 +21,6 @@ text-ui-test/EXPECTED-UNIX.TXT
 
 # VSCode configuration files
 /.vscode/
+
+# data files
+data/

@@ -126,7 +126,7 @@ public class TaskStorage {
             if (format.length != 4) {
                 throw AthenaInvalidFormat.invalidEventFormat();
             }
-            String[] duration = format[3].split("-");
+            String[] duration = format[3].split(" - ");
             if (duration.length < 2) {
                 throw AthenaInvalidFormat.invalidEventFormat();
             }

@@ -46,7 +46,7 @@ public class Event extends Task {
      */
     @Override
     public String toFileFormat() {
-        return String.format("E | %s | %s | %s-%s",
+        return String.format("E | %s | %s | %s - %s",
             getStatus() ? "1" : "0",
             getlabel(),
             from.format(INPUT_FORMAT),
