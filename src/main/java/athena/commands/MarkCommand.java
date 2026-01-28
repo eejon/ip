@@ -8,7 +8,7 @@ import athena.ui.UI;
  * The task is identified by its index in the task list.
  */
 public class MarkCommand extends Command {
-    private final int index;
+    private int index;
 
     /**
      * Constructs a new MarkCommand object.
