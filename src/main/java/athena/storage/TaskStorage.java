@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,7 @@ import athena.tasks.Todo;
 
 public class TaskStorage {
     private static final String STORAGE_FILEPATH = "./data/athena.txt";
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private String filePath;
 
     public TaskStorage() {
@@ -63,6 +67,7 @@ public class TaskStorage {
         }
 
         // Read tasks from file
+        // https://stackoverflow.com/questions/5516020/bufferedreader-read-multiple-lines-into-a-single-string
         FileReader fileIn = new FileReader(file);
         BufferedReader bufferIn = new BufferedReader(fileIn);
         String line;
@@ -106,8 +111,12 @@ public class TaskStorage {
             if (format.length != 4) {
                 throw new AthenaException("Invalid format for Deadline task");
             }
-            String dueDate = format[3].trim();
-            task = new Deadline(description, dueDate);
+            try {
+                LocalDate dueDate = LocalDate.parse(format[3].trim(), DATE_FORMAT);
+                task = new Deadline(description, dueDate);
+            } catch (DateTimeParseException e) {
+                throw new AthenaException("Invalid date format in file for Deadline task");
+            }
             break;
 
         case "E":
@@ -118,9 +127,13 @@ public class TaskStorage {
             if (duration.length < 2) {
                 throw new AthenaException("Invalid format for Event task");
             }
-            String from = duration[0];
-            String to = duration[1];
-            task = new Event(description, from, to);
+            try {
+                LocalDate from = LocalDate.parse(duration[0].trim(), DATE_FORMAT);
+                LocalDate to = LocalDate.parse(duration[1].trim(), DATE_FORMAT);
+                task = new Event(description, from, to);
+            } catch (DateTimeParseException e) {
+                throw new AthenaException("Invalid date format in file for Event task");
+            }
             break;
 
         default:
