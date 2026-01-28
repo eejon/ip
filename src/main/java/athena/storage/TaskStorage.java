@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import athena.exceptions.AthenaException;
+import athena.exceptions.AthenaInvalidDate;
+import athena.exceptions.AthenaInvalidFormat;
 import athena.tasks.Deadline;
 import athena.tasks.Event;
 import athena.tasks.Task;
@@ -79,7 +81,8 @@ public class TaskStorage {
                 lineNumber++;
             } catch (AthenaException e) {
                 // Log corrupted line but continue loading other tasks
-                System.err.println("Warning: Corrupted data on line " + lineNumber + ": " + e.getMessage());
+                System.err.println("\t By the gods! I have never seen such disorder on line "
+                    + lineNumber + ": " + e.getMessage());
             }
         }
         bufferIn.close();
@@ -90,7 +93,7 @@ public class TaskStorage {
         String[] format = line.split(" \\| ");
         
         if (format.length < 3) {
-            throw new AthenaException("Invalid file format: insufficient fields");
+            throw AthenaInvalidFormat.invalidFormat();
         }
 
         String type = format[0];
@@ -102,42 +105,42 @@ public class TaskStorage {
         switch (type) {
         case "T":
             if (format.length != 3) {
-                throw new AthenaException("Invalid format for Todo task");
+                throw AthenaInvalidFormat.invalidTodoFormat();
             }
             task = new Todo(description);
             break;
 
         case "D":
             if (format.length != 4) {
-                throw new AthenaException("Invalid format for Deadline task");
+                throw AthenaInvalidFormat.invalidDeadlineFormat();
             }
             try {
                 LocalDate dueDate = LocalDate.parse(format[3].trim(), DATE_FORMAT);
                 task = new Deadline(description, dueDate);
             } catch (DateTimeParseException e) {
-                throw new AthenaException("Invalid date format in file for Deadline task");
+                throw AthenaInvalidDate.invalidDate();
             }
             break;
 
         case "E":
             if (format.length != 4) {
-                throw new AthenaException("Invalid format for Event task");
+                throw AthenaInvalidFormat.invalidEventFormat();
             }
             String[] duration = format[3].split("-");
             if (duration.length < 2) {
-                throw new AthenaException("Invalid format for Event task");
+                throw AthenaInvalidFormat.invalidEventFormat();
             }
             try {
                 LocalDate from = LocalDate.parse(duration[0].trim(), DATE_FORMAT);
                 LocalDate to = LocalDate.parse(duration[1].trim(), DATE_FORMAT);
                 task = new Event(description, from, to);
             } catch (DateTimeParseException e) {
-                throw new AthenaException("Invalid date format in file for Event task");
+                throw AthenaInvalidDate.invalidDate();
             }
             break;
 
         default:
-            throw new AthenaException("Unknown task type: " + type);
+            throw new AthenaException("\t The tapestry is frayed; this record is lost to chaos.");
         }
         
         // Set completion status
