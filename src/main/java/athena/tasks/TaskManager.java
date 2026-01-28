@@ -1,6 +1,10 @@
 package athena.tasks;
 
 import java.util.List;
+
+import athena.storage.TaskStorage;
+
+import java.io.IOException;
 import java.util.ArrayList;
 /**
  * Handles all Task list operations including adding, modifying 
@@ -8,7 +12,8 @@ import java.util.ArrayList;
  * abstracts the behavior 
  */
 public class TaskManager {
-    private List<Task> taskList;;
+    private List<Task> taskList;
+    private TaskStorage storage;
 
     /**
      * Constructs a new TaskManager object.
@@ -16,6 +21,29 @@ public class TaskManager {
      */
     public TaskManager() {
         this.taskList = new ArrayList<>();
+        this.storage = new TaskStorage();
+    }
+
+    public TaskManager(TaskStorage storage) {
+        this.taskList = new ArrayList<>();
+        this.storage = storage;
+    }
+
+    /**
+     * Loads tasks from storage into the task list.
+     *
+     * @throws IOException if an I/O error occurs during loading.
+     */
+    public void loadTasks() throws IOException {
+        this.taskList = storage.loadTasks();
+    }
+
+    private void saveTasks() {
+        try {
+            storage.saveTasks(taskList);
+        } catch (IOException e) {
+            System.err.println("Error saving tasks: " + e.getMessage());
+        }
     }
 
     /**
@@ -58,35 +86,39 @@ public class TaskManager {
      */
     public void addTask(Task task) {
         this.taskList.add(task);
+        saveTasks();
     }
 
     /**
-     * Marks task at specified index as complete.
-     * 
+     * Marks task at specified index as complete and saves to storage.
+     *
      * @param index index of task to be marked as complete.
      * @throws IndexOutOfBoundsException if given index is out of bounds.
      */
     public void markTask(int index) throws IndexOutOfBoundsException {
         this.taskList.get(index).markDone();
+        this.saveTasks();
     }
 
     /**
-     * Marks tasks at specified index as incomplete.
-     * 
+     * Marks tasks at specified index as incomplete and saves to storage.
+     *
      * @param index index of task to be marked as incomplete.
      * @throws IndexOutOfBoundsException if given index is out of bounds.
      */
     public void unmarkTask(int index) throws IndexOutOfBoundsException {
         this.taskList.get(index).markNotDone();
+        this.saveTasks();
     }
 
     /**
-     * Deletes a task from the task list.
-     * 
+     * Deletes a task from the task list and saves to storage.
+     *
      * @param index index of task to be deleted.
      * @throws IndexOutOfBoundsException if given index is out of bounds.
      */
     public void deleteTask(int index) throws IndexOutOfBoundsException {
         this.taskList.remove(index);
+        this.saveTasks();
     }
 }

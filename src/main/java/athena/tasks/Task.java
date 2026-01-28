@@ -3,9 +3,9 @@ package athena.tasks;
  * Represents a task with a label, and completion status.
  * A task can be marked as complete or incomplete.
  */
-public class Task {
-    protected boolean isCompleted;
-    protected String label;
+public abstract class Task {
+    private boolean isCompleted;
+    private String label;
 
     /**
      * Constructs a new task with the specified label, defaults no description.
@@ -64,4 +64,6 @@ public class Task {
     public String toString() {
         return "[" + getStatusIcon() + "] " + label;
     }
+
+    public abstract String toFileFormat();
 }
