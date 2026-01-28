@@ -1,5 +1,9 @@
 package athena.parser;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import athena.commands.Command;
 import athena.commands.CreateCommand;
 import athena.commands.DeleteCommand;
@@ -20,10 +24,11 @@ import athena.tasks.Todo;
  * arguments for supported commands.
  */
 public class Parser {
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-	  /**
+    /**
      * Returns command to execute after parsing user input.
-     * 
+     *
      * @param input the user input.
      * @return the command to be executed.
      * @throws AthenaException If user input has invalid commands or insufficient arguments.
@@ -63,17 +68,28 @@ public class Parser {
                 if (args.length < 2 || args[0].trim().isEmpty() || args[1].trim().isEmpty()) {
                     throw AthenaInvalidArguments.missingDeadline();
                 }
-                return new CreateCommand(new Deadline(args[0], args[1]));
+                try {
+                    LocalDate dueDate = LocalDate.parse(args[1].trim(), DATE_FORMAT);
+                    return new CreateCommand(new Deadline(args[0].trim(), dueDate));
+                } catch (DateTimeParseException e) {
+                    throw new AthenaException("Invalid date format. Please use yyyy-MM-dd (e.g., 2019-10-15)");
+                }
             }
 
             case EVENT: {
                 String[] args = arguments.split(" /from | /to ");
                 // No arguments or no from/to
-                if (args.length < 3 || args[0].trim().isEmpty() || args[1].trim().isEmpty() 
-                	|| args[2].trim().isEmpty()) {
+                if (args.length < 3 || args[0].trim().isEmpty() || args[1].trim().isEmpty()
+                    || args[2].trim().isEmpty()) {
                     throw AthenaInvalidArguments.missingEvent();
                 }
-                return new CreateCommand(new Event(args[0], args[1], args[2]));
+                try {
+                    LocalDate from = LocalDate.parse(args[1].trim(), DATE_FORMAT);
+                    LocalDate to = LocalDate.parse(args[2].trim(), DATE_FORMAT);
+                    return new CreateCommand(new Event(args[0].trim(), from, to));
+                } catch (DateTimeParseException e) {
+                    throw new AthenaException("Invalid date format. Please use yyyy-MM-dd (e.g., 2019-10-15)");
+                }
             }
 
             case DELETE:
