@@ -24,6 +24,12 @@ public class TaskManager {
         this.storage = new TaskStorage();
     }
 
+    /**
+     * Constructs a new TaskManager object with a custom TaskStorage.
+     * Encapsulates and manages List<Task> with the provided storage.
+     *
+     * @param storage The TaskStorage instance to use for persistence.
+     */
     public TaskManager(TaskStorage storage) {
         this.taskList = new ArrayList<>();
         this.storage = storage;
@@ -47,25 +53,30 @@ public class TaskManager {
     }
 
     /**
-     * Returns size of task list.
-     * 
-     * @return number of tasks in list.
+     * Returns the size of the task list.
+     *
+     * @return The number of tasks in the list.
      */
     public int size() {
         return this.taskList.size();
     }
     
     /**
-     * Returns task at speicified index.
-     * 
-     * @param index index of task.
-     * @return the task at specified index.
+     * Returns task at specified index.
+     *
+     * @param index The index of the task.
+     * @return The task at the specified index.
      */
     public Task get(int index) {
         return this.taskList.get(index);
     }
 
-    
+    /**
+     * Returns a formatted string representation of all tasks in the list.
+     * Displays a numbered list of tasks with their current status.
+     *
+     * @return A formatted string containing all tasks or a message if the list is empty.
+     */
     public String iterateList() {
         StringBuilder sb = new StringBuilder();
         if (taskList.size() == 0) {
@@ -80,9 +91,9 @@ public class TaskManager {
     }
 
     /**
-     * Adds a task to the task list.
-     * 
-     * @param task specified task to add to list.
+     * Adds a task to the task list and saves to storage.
+     *
+     * @param task The task to add to the list.
      */
     public void addTask(Task task) {
         this.taskList.add(task);
