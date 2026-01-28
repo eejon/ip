@@ -3,6 +3,7 @@ package athena.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import athena.tasks.Task;
 /**
@@ -130,7 +131,7 @@ public class UI {
 
     /**
      * Prints message for when task is deleted fom list successfully to stdout.
-     * 
+     *
      * @param task The task that was deleted.
      * @param length The number of tasks in the list.
      */
@@ -138,5 +139,22 @@ public class UI {
         System.out.println("\t Struck from the record. The objective is removed:");
         System.out.printf("\t   %s\n", task);
         System.out.printf("\t The record shows %d tasks awaiting your mastery!\n", length);
+    }
+
+    /**
+     * Prints tasks found by keyword search.
+     *
+     * @param tasks The list of tasks found.
+     * @param keyword The keyword that was searched.
+     */
+    public void showFoundTasks(List<Task> tasks, String keyword) {
+        if (tasks.isEmpty()) {
+            System.out.println("\t The archives reveal no tasks containing \"" + keyword + "\".");
+        } else {
+            System.out.println("\t Here are the matching tasks in your list:");
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.printf("\t %d.%s\n", i + 1, tasks.get(i));
+            }
+        }
     }
 }

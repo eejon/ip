@@ -1,4 +1,5 @@
 package athena.exceptions;
+
 /**
  * Represents an exception for invalid or missing command arguments.
  * This exception is thrown when a command is missing required parameters
@@ -13,6 +14,8 @@ public class AthenaInvalidArguments extends AthenaException {
         "\t Strategy requires detail. A deadline must have a defined objective.";
     private static final String INVALID_EVENT = 
         "\t Strategy requires detail. An event must have a defined objective.";
+    private static final String INVALID_SEARCH = 
+        "\t Speak the word, and I shall scan the scrolls for a match.";
 
     private AthenaInvalidArguments(String message) {
         super(message);
@@ -43,6 +46,10 @@ public class AthenaInvalidArguments extends AthenaException {
      */
     public static AthenaInvalidArguments missingEvent() {
         return new AthenaInvalidArguments(INVALID_EVENT);
+    }
+
+    public static AthenaInvalidArguments missingKeyword() {
+        return new AthenaInvalidArguments(INVALID_SEARCH);
     }
 
 }

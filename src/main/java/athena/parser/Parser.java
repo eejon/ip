@@ -8,6 +8,7 @@ import athena.commands.Command;
 import athena.commands.CreateCommand;
 import athena.commands.DeleteCommand;
 import athena.commands.ExitCommand;
+import athena.commands.FindCommand;
 import athena.commands.ListCommand;
 import athena.commands.MarkCommand;
 import athena.commands.UnmarkCommand;
@@ -95,6 +96,12 @@ public class Parser {
 
             case DELETE:
                 return new DeleteCommand(Integer.parseInt(arguments) - 1);
+
+            case FIND:
+                if (arguments.isEmpty()) {
+                    throw AthenaInvalidArguments.missingKeyword();
+                }
+                return new FindCommand(arguments.trim());
 
             default:
                 throw AthenaInvalidCommand.invalidCommand();
