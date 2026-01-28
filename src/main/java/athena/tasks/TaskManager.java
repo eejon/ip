@@ -121,4 +121,23 @@ public class TaskManager {
         this.taskList.remove(index);
         this.saveTasks();
     }
+
+    /**
+     * Finds all tasks that contain the specified keyword in their description.
+     * The search is case-insensitive.
+     *
+     * @param keyword The keyword to search for.
+     * @return A list of tasks containing the keyword.
+     */
+    public List<Task> findByKeyword(String keyword) {
+        List<Task> foundTasks = new ArrayList<>();
+        String lowerKeyword = keyword.toLowerCase();
+
+        for (Task task : taskList) {
+            if (task.getlabel().toLowerCase().contains(lowerKeyword)) {
+                foundTasks.add(task);
+            }
+        }
+        return foundTasks;
+    }
 }
