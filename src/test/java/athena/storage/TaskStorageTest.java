@@ -31,7 +31,7 @@ public class TaskStorageTest {
 
         Todo todo = new Todo("read book");
         Deadline deadline = new Deadline("return book", LocalDate.of(2026, 1, 31));
-        Event event = new Event("project meeting", 
+        Event event = new Event("project meeting",
             LocalDate.of(2026, 1, 30), LocalDate.of(2026, 1, 31));
         deadline.markDone();
 
@@ -64,6 +64,7 @@ public class TaskStorageTest {
 
         assertEquals("T | 1 | read book", tasks.get(0).toFileFormat(), "Should return same task entry");
         assertEquals("D | 1 | return book | 2026-01-31", tasks.get(1).toFileFormat(), "Should return same task entry");
-        assertEquals("E | 0 | project meeting | 2026-01-30 - 2026-01-31", tasks.get(2).toFileFormat(), "Should return same task entry");
+        assertEquals("E | 0 | project meeting | 2026-01-30 - 2026-01-31", tasks.get(2).toFileFormat(),
+            "Should return same task entry");
     }
 }

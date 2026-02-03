@@ -23,7 +23,7 @@ public class MarkCommand extends Command {
     /**
      * {@inheritDoc}
      * This implementation marks a task by referencing the index.
-     * 
+     *
      * @param taskList {@inheritDoc}
      * @param ui {@inheritDoc}
      * @return {@inheritDoc}

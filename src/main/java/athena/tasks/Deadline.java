@@ -8,9 +8,9 @@ import java.time.format.DateTimeFormatter;
  * Subclass of Task
  */
 public class Deadline extends Task {
-    private LocalDate dueDate;
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy");
+    private LocalDate dueDate;
 
     /**
      * Constructs a new Deadline task.

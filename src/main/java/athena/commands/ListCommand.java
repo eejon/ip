@@ -10,10 +10,10 @@ import athena.ui.UI;
  */
 public class ListCommand extends Command {
 
-	  /**
+    /**
      * {@inheritDoc}
      * This implementation facilitates printing of the items in the task list.
-     * 
+     *
      * @param taskList {@inheritDoc}
      * @param ui {@inheritDoc}
      * @return {@inheritDoc}

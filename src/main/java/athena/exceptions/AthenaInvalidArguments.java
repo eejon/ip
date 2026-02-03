@@ -8,13 +8,13 @@ package athena.exceptions;
 public class AthenaInvalidArguments extends AthenaException {
 
     /* Class level constant error messages */
-    private static final String INVALID_TODO = 
+    private static final String INVALID_TODO =
         "\t Strategy requires detail. A todo must have a defined objective.";
-    private static final String INVALID_DEADLINE = 
+    private static final String INVALID_DEADLINE =
         "\t Strategy requires detail. A deadline must have a defined objective.";
-    private static final String INVALID_EVENT = 
+    private static final String INVALID_EVENT =
         "\t Strategy requires detail. An event must have a defined objective.";
-    private static final String INVALID_SEARCH = 
+    private static final String INVALID_SEARCH =
         "\t Speak the word, and I shall scan the scrolls for a match.";
 
     private AthenaInvalidArguments(String message) {
@@ -23,7 +23,7 @@ public class AthenaInvalidArguments extends AthenaException {
 
     /**
      * Factory method to create AthenaInvalidArguments.
-     * 
+     *
      * @return AthenaInvalidArguments exception with invalid todo error message.
      */
     public static AthenaInvalidArguments missingDesciption() {
@@ -32,7 +32,7 @@ public class AthenaInvalidArguments extends AthenaException {
 
     /**
      * Factory method to create AthenaInvalidArguments.
-     * 
+     *
      * @return AthenaInvalidArguments exception with invalid deadline error message.
      */
     public static AthenaInvalidArguments missingDeadline() {
@@ -41,13 +41,18 @@ public class AthenaInvalidArguments extends AthenaException {
 
     /**
      * Factory method to create AthenaInvalidArguments.
-     * 
+     *
      * @return AthenaInvalidArguments exception with invalid event error message.
      */
     public static AthenaInvalidArguments missingEvent() {
         return new AthenaInvalidArguments(INVALID_EVENT);
     }
 
+    /**
+     * Factory method to create AthenaInvalidArguments.
+     *
+     * @return AthenaInvalidArguments exception with invalid search error message.
+     */
     public static AthenaInvalidArguments missingKeyword() {
         return new AthenaInvalidArguments(INVALID_SEARCH);
     }

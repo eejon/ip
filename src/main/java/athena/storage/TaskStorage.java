@@ -21,7 +21,7 @@ import athena.tasks.Todo;
 /**
  * Handles all file read and write operations for modifications to task list.
  * Contains logic to parse text file data into respective Task objects and loads it into task list.
- * Saves task list into custom text format. 
+ * Saves task list into custom text format.
  */
 public class TaskStorage {
     private static final String STORAGE_FILEPATH = "./data/athena.txt";
@@ -54,7 +54,7 @@ public class TaskStorage {
      */
     public void saveTasks(List<Task> data) throws IOException {
         File file = new File(this.filePath);
-        
+
         File parentDir = file.getParentFile();
         if (parentDir != null && !parentDir.exists()) {
             parentDir.mkdirs();
@@ -125,7 +125,7 @@ public class TaskStorage {
      */
     private Task parseTask(String line) throws AthenaException {
         String[] format = line.split(" \\| ");
-        
+
         if (format.length < 3) {
             throw AthenaInvalidFormat.invalidFormat();
         }
@@ -135,7 +135,7 @@ public class TaskStorage {
         String description = format[2];
 
         Task task;
-        
+
         switch (type) {
         case "T":
             if (format.length != 3) {
@@ -176,7 +176,7 @@ public class TaskStorage {
         default:
             throw new AthenaException("\t The tapestry is frayed; this record is lost to chaos.");
         }
-        
+
         // Set completion status
         if (status.equals("1")) {
             task.markDone();

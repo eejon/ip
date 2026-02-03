@@ -5,7 +5,6 @@ package athena.exceptions;
  * user interaction with the Athena chatbot.
  */
 public class AthenaException extends Exception {
-    
     /**
      * Constructs a new AthenaException with the specified error message.
      *

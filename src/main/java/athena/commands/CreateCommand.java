@@ -1,8 +1,8 @@
 package athena.commands;
 
-import athena.ui.UI;
 import athena.tasks.Task;
 import athena.tasks.TaskManager;
+import athena.ui.UI;
 
 /**
  * Represents a command to create and add a new task to the task list.
@@ -22,7 +22,7 @@ public class CreateCommand extends Command {
     /**
      * {@inheritDoc}
      * This implementation adds the task associated with command to the task list.
-     * 
+     *
      * @param taskList {@inheritDoc}
      * @param ui {@inheritDoc}
      * @return {@inheritDoc}

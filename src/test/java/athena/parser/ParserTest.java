@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.beans.Transient;
-
 import org.junit.jupiter.api.Test;
 
 import athena.commands.Command;
@@ -60,7 +58,7 @@ public class ParserTest {
         Exception exception = assertThrows(AthenaException.class, () -> {
             Parser.parse("deadline return book /by");
         });
-        
+
         String expectedMessage = "\t Strategy requires detail. A deadline must have a defined objective.";
         String actual = exception.getMessage();
 
@@ -72,10 +70,10 @@ public class ParserTest {
         Exception exception = assertThrows(AthenaException.class, () -> {
             Parser.parse("deadline return book /by 1 Jan");
         });
-        
+
         String expectedMessage = "\t Chronos rejects this entry. Chronos enforces yyyy-MM-dd.";
         String actual = exception.getMessage();
-        
+
         assertEquals(expectedMessage, actual);
     }
 
@@ -90,7 +88,7 @@ public class ParserTest {
         Exception exception = assertThrows(AthenaException.class, () -> {
             Parser.parse("event meeting /from 2019-12-02 /to");
         });
-        
+
         String expectedMessage = "\t Strategy requires detail. An event must have a defined objective.";
         String actual = exception.getMessage();
 
@@ -102,10 +100,10 @@ public class ParserTest {
         Exception exception = assertThrows(AthenaException.class, () -> {
             Parser.parse("event meeting /from 2019-12-02 /to 31 jan");
         });
-        
+
         String expectedMessage = "\t Chronos rejects this entry. Chronos enforces yyyy-MM-dd.";
         String actual = exception.getMessage();
-        
+
         assertEquals(expectedMessage, actual);
     }
 
@@ -132,10 +130,10 @@ public class ParserTest {
         Exception exception = assertThrows(AthenaException.class, () -> {
             Parser.parse("hi");
         });
-        
+
         String expectedMessage = "\t I do not recognize that tactic. Speak with clarity.";
         String actual = exception.getMessage();
-        
+
         assertEquals(expectedMessage, actual);
     }
 }

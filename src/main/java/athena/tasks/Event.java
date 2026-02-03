@@ -8,10 +8,10 @@ import java.time.format.DateTimeFormatter;
  * specific date/time. Subclass of Task.
  */
 public class Event extends Task {
-    private LocalDate from;
-    private LocalDate to;
     private static final DateTimeFormatter INPUT_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final DateTimeFormatter OUTPUT_FORMAT = DateTimeFormatter.ofPattern("MMM dd yyyy");
+    private LocalDate from;
+    private LocalDate to;
 
     /**
      * Constructs a new Event task.
@@ -52,5 +52,4 @@ public class Event extends Task {
             from.format(INPUT_FORMAT),
             to.format(INPUT_FORMAT));
     }
-    
 }

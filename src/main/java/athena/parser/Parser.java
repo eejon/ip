@@ -22,7 +22,7 @@ import athena.tasks.Todo;
 
 /**
  * Parses user input and maps them to executable Command objects.
- * Contains logic to parsing and interpreting user commands and 
+ * Contains logic to parsing and interpreting user commands and
  * arguments for supported commands.
  */
 public class Parser {
@@ -39,25 +39,25 @@ public class Parser {
     public static Command parse(String input) throws AthenaException, NumberFormatException {
         // Parse inputs, split into [command, argument(s)]
         String[] inputs = input.trim().split(" ", 2);
-        
+
         String command = inputs[0].toUpperCase();
         String arguments = inputs.length > 1 ? inputs[1] : ""; // default ""
-        
+
         try {
             CommandType type = CommandType.valueOf(command);
             switch (type) {
             case LIST:
                 return new ListCommand();
-            
+
             case BYE:
                 return new ExitCommand();
-            
-            case MARK: 
+
+            case MARK:
                 return new MarkCommand(Integer.parseInt(arguments) - 1);
-            
+
             case UNMARK:
                 return new UnmarkCommand(Integer.parseInt(arguments) - 1);
-            
+
             case TODO:
                 // No arguments
                 if (arguments.isEmpty()) {

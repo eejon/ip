@@ -1,37 +1,36 @@
 package athena.tasks;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import athena.storage.TaskStorage;
-
-import java.io.IOException;
-import java.util.ArrayList;
 /**
- * Handles all Task list operations including adding, modifying 
+ * Handles all Task list operations including adding, modifying
  * the list and its Tasks. Encapsulates the task list and
- * abstracts the behavior 
+ * abstracts the behavior
  */
 public class TaskManager {
-    private List<Task> taskList;
+    private List<Task> tasks;
     private TaskStorage storage;
 
     /**
      * Constructs a new TaskManager object.
-     * Encapsulates and manages List<Task>.
+     * Encapsulates and manages List of Tasks.
      */
     public TaskManager() {
-        this.taskList = new ArrayList<>();
+        this.tasks = new ArrayList<>();
         this.storage = new TaskStorage();
     }
 
     /**
      * Constructs a new TaskManager object with a custom TaskStorage.
-     * Encapsulates and manages List<Task> with the provided storage.
+     * Encapsulates and manages List of Tasks with the provided storage.
      *
      * @param storage The TaskStorage instance to use for persistence.
      */
     public TaskManager(TaskStorage storage) {
-        this.taskList = new ArrayList<>();
+        this.tasks = new ArrayList<>();
         this.storage = storage;
     }
 
@@ -41,12 +40,12 @@ public class TaskManager {
      * @throws IOException if an I/O error occurs during loading.
      */
     public void loadTasks() throws IOException {
-        this.taskList = storage.loadTasks();
+        this.tasks = storage.loadTasks();
     }
 
     private void saveTasks() {
         try {
-            storage.saveTasks(taskList);
+            storage.saveTasks(tasks);
         } catch (IOException e) {
             System.err.println("Error saving tasks: " + e.getMessage());
         }
@@ -58,9 +57,9 @@ public class TaskManager {
      * @return The number of tasks in the list.
      */
     public int size() {
-        return this.taskList.size();
+        return this.tasks.size();
     }
-    
+
     /**
      * Returns task at specified index.
      *
@@ -68,7 +67,7 @@ public class TaskManager {
      * @return The task at the specified index.
      */
     public Task get(int index) {
-        return this.taskList.get(index);
+        return this.tasks.get(index);
     }
 
     /**
@@ -79,13 +78,13 @@ public class TaskManager {
      */
     public String iterateList() {
         StringBuilder sb = new StringBuilder();
-        if (taskList.size() == 0) {
+        if (tasks.size() == 0) {
             sb.append("\t The field is clear. Victory is absolute.\n");
             return sb.toString();
         }
         sb.append("\t Your campaign stands as follows:\n");
-        for (int i = 0; i < taskList.size(); i++) {
-            sb.append(String.format("\t %d.%s\n", i + 1, taskList.get(i)));
+        for (int i = 0; i < tasks.size(); i++) {
+            sb.append(String.format("\t %d.%s\n", i + 1, tasks.get(i)));
         }
         return sb.toString();
     }
@@ -96,7 +95,7 @@ public class TaskManager {
      * @param task The task to add to the list.
      */
     public void addTask(Task task) {
-        this.taskList.add(task);
+        this.tasks.add(task);
         saveTasks();
     }
 
@@ -107,7 +106,7 @@ public class TaskManager {
      * @throws IndexOutOfBoundsException if given index is out of bounds.
      */
     public void markTask(int index) throws IndexOutOfBoundsException {
-        this.taskList.get(index).markDone();
+        this.tasks.get(index).markDone();
         this.saveTasks();
     }
 
@@ -118,7 +117,7 @@ public class TaskManager {
      * @throws IndexOutOfBoundsException if given index is out of bounds.
      */
     public void unmarkTask(int index) throws IndexOutOfBoundsException {
-        this.taskList.get(index).markNotDone();
+        this.tasks.get(index).markNotDone();
         this.saveTasks();
     }
 
@@ -129,7 +128,7 @@ public class TaskManager {
      * @throws IndexOutOfBoundsException if given index is out of bounds.
      */
     public void deleteTask(int index) throws IndexOutOfBoundsException {
-        this.taskList.remove(index);
+        this.tasks.remove(index);
         this.saveTasks();
     }
 
@@ -144,7 +143,7 @@ public class TaskManager {
         List<Task> foundTasks = new ArrayList<>();
         String lowerKeyword = keyword.toLowerCase();
 
-        for (Task task : taskList) {
+        for (Task task : tasks) {
             if (task.getlabel().toLowerCase().contains(lowerKeyword)) {
                 foundTasks.add(task);
             }

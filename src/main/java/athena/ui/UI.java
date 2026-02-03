@@ -25,7 +25,7 @@ public class UI {
      * Constructs a new UI object.
      */
     public UI() {
-      this.br = new BufferedReader(new InputStreamReader(System.in));
+        this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
     /**
@@ -35,7 +35,7 @@ public class UI {
      */
     public String readInput() throws IOException {
         System.out.print("\t> ");
-        return br.readLine(); // return user input 
+        return br.readLine(); // return user input
     }
 
     /**
@@ -64,8 +64,8 @@ public class UI {
     }
 
     /**
-     * Prints all itmes in the list of tasks to stdout.
-     * 
+     * Prints all items in the list of tasks to stdout.
+     *
      * @param listString The formatted string of the list of tasks.
      */
     public void showTaskList(String listString) {
@@ -74,8 +74,8 @@ public class UI {
 
     /**
      * Prints message for when task is mark as complete to stout.
-     * 
-     * @param task The task that was marked as complete. 
+     *
+     * @param task The task that was marked as complete.
      */
     public void markComplete(Task task) {
         System.out.println("\t Strategy realized. This triumph is recorded:");
@@ -84,7 +84,7 @@ public class UI {
 
     /**
      * Prints message for when task is mark as incomplete to stdout.
-     * 
+     *
      * @param task The task that was marked as incomplete.
      */
     public void markIncomplete(Task task) {
@@ -94,7 +94,7 @@ public class UI {
 
     /**
      * Prints message for when task is added to list successfully to stdout.
-     * 
+     *
      * @param task The task that was added.
      * @param length The number of tasks in the list.
      */
@@ -106,7 +106,7 @@ public class UI {
 
     /**
      * Prints error message to stdout
-     * 
+     *
      * @param msg The error message
      */
     public void showError(String msg) {
@@ -125,7 +125,7 @@ public class UI {
      */
     public void showNanError(String nan) {
         System.out.printf(
-            "\t The record does not recognize %s. Provide a true integer.\n", 
+            "\t The record does not recognize %s. Provide a true integer.\n",
             nan);
     }
 

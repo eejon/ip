@@ -22,7 +22,7 @@ public class UnmarkCommand extends Command {
     /**
      * {@inheritDoc}
      * This implementation unmarks a task by referencing the index.
-     * 
+     *
      * @param taskList {@inheritDoc}
      * @param ui {@inheritDoc}
      * @return {@inheritDoc}

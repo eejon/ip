@@ -6,7 +6,7 @@ package athena.exceptions;
  */
 public class AthenaInvalidCommand extends AthenaException {
     /* Class level constant error messages */
-    private static final String INVALID_COMMAND = 
+    private static final String INVALID_COMMAND =
         "\t I do not recognize that tactic. Speak with clarity.";
 
     private AthenaInvalidCommand(String message) {
@@ -15,7 +15,7 @@ public class AthenaInvalidCommand extends AthenaException {
 
     /**
      * Factory method to create AthenaInvalidCommand.
-     * 
+     *
      * @return AthenaInvalidCommand exception with invalid command error message.
      */
     public static AthenaInvalidCommand invalidCommand() {
