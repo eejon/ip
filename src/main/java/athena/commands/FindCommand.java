@@ -4,7 +4,7 @@ import java.util.List;
 
 import athena.tasks.Task;
 import athena.tasks.TaskManager;
-import athena.ui.UI;
+import athena.ui.Ui;
 
 /**
  * Represents a command to find tasks by searching for a keyword in the description.
@@ -31,7 +31,7 @@ public class FindCommand extends Command {
      * @return {@inheritDoc}
      */
     @Override
-    public int dispatch(TaskManager taskList, UI ui) {
+    public int dispatch(TaskManager taskList, Ui ui) {
         List<Task> foundTasks = taskList.findByKeyword(keyword);
         ui.showFoundTasks(foundTasks, keyword);
         return 0;

@@ -1,7 +1,7 @@
 package athena.commands;
 
 import athena.tasks.TaskManager;
-import athena.ui.UI;
+import athena.ui.Ui;
 
 /**
  * Represents a command to mark a task as completed.
@@ -29,7 +29,7 @@ public class MarkCommand extends Command {
      * @return {@inheritDoc}
      */
     @Override
-    public int dispatch(TaskManager taskList, UI ui) throws IndexOutOfBoundsException {
+    public int dispatch(TaskManager taskList, Ui ui) throws IndexOutOfBoundsException {
         taskList.markTask(this.index);
         ui.markComplete(taskList.get(this.index));
         return 0;

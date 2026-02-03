@@ -2,7 +2,7 @@ package athena.commands;
 
 import athena.tasks.Task;
 import athena.tasks.TaskManager;
-import athena.ui.UI;
+import athena.ui.Ui;
 
 /**
  * Represents a command to create and add a new task to the task list.
@@ -28,7 +28,7 @@ public class CreateCommand extends Command {
      * @return {@inheritDoc}
      */
     @Override
-    public int dispatch(TaskManager taskList, UI ui) {
+    public int dispatch(TaskManager taskList, Ui ui) {
         taskList.addTask(this.task); // TaskManager adds task
         ui.taskCreated(task, taskList.size()); // UI prints task created message
         return 0;

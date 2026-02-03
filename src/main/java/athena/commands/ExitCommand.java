@@ -1,7 +1,7 @@
 package athena.commands;
 
 import athena.tasks.TaskManager;
-import athena.ui.UI;
+import athena.ui.Ui;
 
 /**
  * Represents the command to exit the Athena chatbot application.
@@ -16,7 +16,7 @@ public class ExitCommand extends Command {
      * @return returns exit code 1 to signal termination to main loop.
      */
     @Override
-    public int dispatch(TaskManager taskList, UI ui) {
+    public int dispatch(TaskManager taskList, Ui ui) {
         ui.printExit();
         return 1;
     }
