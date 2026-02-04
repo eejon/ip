@@ -1,0 +1,106 @@
+/* Font import */
+@font-face {
+    font-family: "Cinzel";
+    src: url("../fonts/Cinzel-Regular.ttf");
+}
+
+@font-face {
+    font-family: "GFS Didot";
+    src: url("../fonts/GFSDidot-Regular.ttf");
+}
+
+/* Main Window Styling */
+.root {
+    -fx-background-color: #1E2124;
+}
+
+/* Scroll Pane */
+#scrollPane {
+    -fx-background: #1E2124;
+    -fx-background-color: #1E2124;
+}
+
+#scrollPane .viewport {
+    -fx-background-color: #1E2124;
+}
+
+/* Dialog Container */
+#dialogContainer {
+    -fx-background-color: #1E2124;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+/* Input Area Container */
+#inputArea {
+    -fx-background-color: #3C4044;
+    -fx-padding: 15;
+}
+
+/* Text Field */
+#userInput {
+    -fx-background-color: #6E7378;
+    -fx-text-fill: #F4F6F8;
+    -fx-font-family: "GFS Didot";
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #B8BDC3;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 10 15 10 15;
+}
+
+#userInput:focused {
+    -fx-background-color: #6E7378;
+    -fx-border-color: #B8BDC3;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+}
+
+/* Send Button */
+#sendButton {
+    -fx-background-color: #B8BDC3;
+    -fx-text-fill: #1E2124;
+    -fx-font-family: "GFS Didot";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+    -fx-padding: 10 20 10 20;
+}
+
+#sendButton:hover {
+    -fx-background-color: #F4F6F8;
+    -fx-text-fill: #1E2124;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+#sendButton:pressed {
+    -fx-background-color: #6E7378;
+    -fx-text-fill: #F4F6F8;
+}
+
+/* Scroll Bar Styling */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: #3C4044;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #6E7378;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #B8BDC3;
+}
+
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
+    -fx-padding: 0;
+}

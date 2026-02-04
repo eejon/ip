@@ -4,19 +4,36 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <fx:root alignment="TOP_RIGHT"
-         maxHeight="1.7976931348623157E308"
          maxWidth="1.7976931348623157E308"
-         prefWidth="400.0"
+         spacing="8"
+         styleClass="dialog-box"
+         stylesheets="@../styles/DialogBox.css"
          type="javafx.scene.layout.HBox"
          xmlns="http://javafx.com/javafx/17"
-         xmlns:fx="http://javafx.com/fxml/1">
+         xmlns:fx="http://javafx.com/fxml/1"
+         fillHeight="false">
   <children>
-    <Label fx:id="dialog" text="Label" wrapText="true" minHeight="-Infinity"/>
-    <ImageView fx:id="displayPicture" fitHeight="99.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" />
+    <VBox fx:id="dialogBubble" maxWidth="260" alignment="CENTER_LEFT">
+      <children>
+        <Label fx:id="dialog"
+               text="Label"
+               wrapText="true"
+               minHeight="-Infinity"
+               maxWidth="250"/>
+      </children>
+    </VBox>
+    <ImageView fx:id="displayPicture"
+               fitHeight="70.0"
+               fitWidth="70.0"
+               pickOnBounds="true"
+               preserveRatio="true"
+               styleClass="avatar">
+      <HBox.margin>
+        <Insets top="5"/>
+      </HBox.margin>
+    </ImageView>
   </children>
-  <padding>
-    <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
-  </padding>
 </fx:root>

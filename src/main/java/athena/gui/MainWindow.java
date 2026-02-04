@@ -56,7 +56,7 @@ public class MainWindow extends AnchorPane {
 
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getAthenaDialog(response, athenaImage)
+                DialogBox.getAthenaDialog(response.trim(), athenaImage)
         );
         userInput.clear();
     }

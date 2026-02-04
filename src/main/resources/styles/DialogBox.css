@@ -1,0 +1,50 @@
+/* Font import */
+@font-face {
+    font-family: "Cinzel";
+    src: url("../fonts/Cinzel-Regular.ttf");
+}
+
+@font-face {
+    font-family: "GFS Didot";
+    src: url("../fonts/GFSDidot-Regular.ttf");
+}
+
+/* Dialog Box Base */
+.dialog-box {
+    -fx-padding: 2 0 2 0;
+}
+
+/* User Dialog Bubble */
+.user-bubble {
+    -fx-background-color: #B8BDC3;
+    -fx-background-radius: 15 15 5 15;
+    -fx-effect: dropshadow(gaussian, rgba(30, 33, 36, 0.4), 8, 0.3, 0, 2);
+    -fx-padding: 4px 10px;
+}
+
+.user-label {
+    -fx-text-fill: #1E2124;
+    -fx-font-family: "GFS Didot";
+    -fx-font-size: 10px;
+    -fx-line-spacing: 0;
+}
+
+/* Athena Dialog Bubble */
+.athena-bubble {
+    -fx-background-color: #3C4044;
+    -fx-background-radius: 15 15 15 5;
+    -fx-effect: dropshadow(gaussian, rgba(30, 33, 36, 0.4), 8, 0.3, 0, 2);
+    -fx-padding: 4px 10px;
+}
+
+.athena-label {
+    -fx-text-fill: #F4F6F8;
+    -fx-font-family: "Cinzel";
+    -fx-font-size: 10px;
+    -fx-line-spacing: 0;
+}
+
+/* Avatar Images */
+.avatar {
+    -fx-effect: dropshadow(gaussian, rgba(30, 33, 36, 0.5), 6, 0.4, 0, 2);
+}

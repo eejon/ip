@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Represents a dialog box consisting of an ImageView to represent the speaker's face
@@ -22,6 +23,8 @@ public class DialogBox extends HBox {
     private Label dialog;
     @FXML
     private ImageView displayPicture;
+    @FXML
+    private VBox dialogBubble;
 
     private DialogBox(String text, Image img) {
         try {
@@ -47,12 +50,23 @@ public class DialogBox extends HBox {
         this.getChildren().setAll(tmp);
     }
 
+    /**
+     * Creates a user dialog with user styling.
+     */
     public static DialogBox getUserDialog(String s, Image i) {
-        return new DialogBox(s, i);
+        var db = new DialogBox(s, i);
+        db.dialogBubble.getStyleClass().add("user-bubble");
+        db.dialog.getStyleClass().add("user-label");
+        return db;
     }
 
+    /**
+     * Creates an Athena dialog with Athena styling.
+     */
     public static DialogBox getAthenaDialog(String s, Image i) {
         var db = new DialogBox(s, i);
+        db.dialogBubble.getStyleClass().add("athena-bubble");
+        db.dialog.getStyleClass().add("athena-label");
         db.flip();
         return db;
     }
