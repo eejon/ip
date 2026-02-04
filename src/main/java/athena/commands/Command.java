@@ -1,7 +1,7 @@
 package athena.commands;
 
 import athena.tasks.TaskManager;
-import athena.ui.UI;
+import athena.ui.Ui;
 
 /**
  * Represents an abstract command in the Athena chatbot.
@@ -17,7 +17,7 @@ public abstract class Command {
      * @param ui The UI object to print messages for each command.
      * @return exit code 0 for success.
      */
-    public abstract int dispatch(TaskManager taskList, UI ui);
+    public abstract int dispatch(TaskManager taskList, Ui ui);
 
 
 }

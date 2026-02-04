@@ -1,7 +1,7 @@
 package athena.commands;
 
 import athena.tasks.TaskManager;
-import athena.ui.UI;
+import athena.ui.Ui;
 
 /**
  * Represents a command to display all tasks in the task list.
@@ -19,7 +19,7 @@ public class ListCommand extends Command {
      * @return {@inheritDoc}
      */
     @Override
-    public int dispatch(TaskManager taskList, UI ui) {
+    public int dispatch(TaskManager taskList, Ui ui) {
         ui.showTaskList(taskList.iterateList());
         return 0;
     }

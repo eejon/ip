@@ -1,7 +1,7 @@
 package athena.commands;
 
 import athena.tasks.TaskManager;
-import athena.ui.UI;
+import athena.ui.Ui;
 
 /**
  * Represents a command to mark a task as incompleted.
@@ -28,7 +28,7 @@ public class UnmarkCommand extends Command {
      * @return {@inheritDoc}
      */
     @Override
-    public int dispatch(TaskManager taskList, UI ui) {
+    public int dispatch(TaskManager taskList, Ui ui) {
         taskList.unmarkTask(this.index);
         ui.markIncomplete(taskList.get(this.index));
         return 0;

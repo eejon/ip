@@ -1,7 +1,7 @@
 package athena.commands;
 
 import athena.tasks.TaskManager;
-import athena.ui.UI;
+import athena.ui.Ui;
 
 /**
  * Represents a command to create and add a new task to the task list.
@@ -27,7 +27,7 @@ public class DeleteCommand extends Command {
      * @return {@inheritDoc}
      */
     @Override
-    public int dispatch(TaskManager taskList, UI ui) throws IndexOutOfBoundsException {
+    public int dispatch(TaskManager taskList, Ui ui) throws IndexOutOfBoundsException {
         ui.showDeleted(taskList.get(this.index), taskList.size() - 1);
         taskList.deleteTask(this.index);
         return 0;
