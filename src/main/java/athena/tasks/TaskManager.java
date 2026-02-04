@@ -84,7 +84,7 @@ public class TaskManager {
         }
         sb.append("\t Your campaign stands as follows:\n");
         for (int i = 0; i < tasks.size(); i++) {
-            sb.append(String.format("\t %d.%s\n", i + 1, tasks.get(i)));
+            sb.append(String.format("\t %d. %s\n", i + 1, tasks.get(i)));
         }
         return sb.toString();
     }

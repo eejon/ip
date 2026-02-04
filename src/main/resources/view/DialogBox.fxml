@@ -16,13 +16,12 @@
          xmlns:fx="http://javafx.com/fxml/1"
          fillHeight="false">
   <children>
-    <VBox fx:id="dialogBubble" maxWidth="260" alignment="CENTER_LEFT">
+    <VBox fx:id="dialogBubble" alignment="CENTER_LEFT">
       <children>
         <Label fx:id="dialog"
                text="Label"
                wrapText="true"
-               minHeight="-Infinity"
-               maxWidth="250"/>
+               minHeight="-Infinity"/>
       </children>
     </VBox>
     <ImageView fx:id="displayPicture"

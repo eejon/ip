@@ -32,6 +32,12 @@ public class DialogBox extends HBox {
             fxmlLoader.setController(this);
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
+
+            dialogBubble.maxWidthProperty().bind(this.widthProperty().multiply(0.7));
+
+            dialog.maxWidthProperty().bind(dialogBubble.maxWidthProperty().subtract(20));
+            dialog.setWrapText(true);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -38,8 +38,8 @@ public class Gui extends Ui {
 
     @Override
     public void printExit() {
-        reply.append("Strategy never rests. I shall remain here, watchful.");
-        reply.append("\t\t\t\t~Athena 🦉");
+        reply.append("Strategy never rests. I shall remain here, watchful.\n");
+        reply.append("\t\t\t\t\t\t\t\t~Athena 🦉");
     }
 
     @Override
@@ -97,7 +97,7 @@ public class Gui extends Ui {
         } else {
             reply.append("I have scoured the scrolls. Here is the knowledge you seek:");
             for (int i = 0; i < tasks.size(); i++) {
-                reply.append(String.format("\t %d.%s\n", i + 1, tasks.get(i)));
+                reply.append(String.format("%d.\t%s\n", i + 1, tasks.get(i)));
             }
         }
     }
