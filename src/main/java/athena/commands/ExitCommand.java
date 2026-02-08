@@ -18,6 +18,6 @@ public class ExitCommand extends Command {
     @Override
     public int dispatch(TaskManager taskList, Ui ui) {
         ui.printExit();
-        return 1;
+        return Command.EXIT_STATUS_CODE;
     }
 }

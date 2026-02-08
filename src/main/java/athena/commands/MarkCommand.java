@@ -32,6 +32,6 @@ public class MarkCommand extends Command {
     public int dispatch(TaskManager taskList, Ui ui) throws IndexOutOfBoundsException {
         taskList.markTask(this.index);
         ui.markComplete(taskList.get(this.index));
-        return 0;
+        return Command.SUCCESS_STATUS_CODE;
     }
 }

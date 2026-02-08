@@ -1,5 +1,6 @@
 package athena.commands;
 
+import athena.tasks.Task;
 import athena.tasks.TaskManager;
 import athena.ui.Ui;
 
@@ -28,8 +29,9 @@ public class DeleteCommand extends Command {
      */
     @Override
     public int dispatch(TaskManager taskList, Ui ui) throws IndexOutOfBoundsException {
-        ui.showDeleted(taskList.get(this.index), taskList.size() - 1);
+        Task deleted = taskList.get(this.index);
         taskList.deleteTask(this.index);
-        return 0;
+        ui.showDeleted(deleted, taskList.size() - 1);
+        return Command.SUCCESS_STATUS_CODE;
     }
 }
