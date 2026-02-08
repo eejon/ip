@@ -43,8 +43,8 @@ public class Deadline extends Task {
     @Override
     public String toFileFormat() {
         return String.format("D | %s | %s | %s",
-            getStatus() ? "1" : "0",
-            getlabel(),
+            isCompleted() ? Task.STATUS_COMPLETE : Task.STATUS_INCOMPLETE,
+            getLabel(),
             dueDate.format(INPUT_FORMAT));
     }
 

@@ -78,10 +78,12 @@ public class TaskManager {
      */
     public String iterateList() {
         StringBuilder sb = new StringBuilder();
-        if (tasks.size() == 0) {
+        
+        if (tasks.isEmpty()) {
             sb.append("\t The field is clear. Victory is absolute.\n");
             return sb.toString();
         }
+
         sb.append("\t Your campaign stands as follows:\n");
         for (int i = 0; i < tasks.size(); i++) {
             sb.append(String.format("\t %d. %s\n", i + 1, tasks.get(i)));
@@ -144,7 +146,7 @@ public class TaskManager {
         String lowerKeyword = keyword.toLowerCase();
 
         for (Task task : tasks) {
-            if (task.getlabel().toLowerCase().contains(lowerKeyword)) {
+            if (task.getLabel().toLowerCase().contains(lowerKeyword)) {
                 foundTasks.add(task);
             }
         }
