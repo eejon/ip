@@ -1,7 +1,7 @@
 todo read book
 todo study for exam
-deadline return book /by Sunday
-event team meeting /from Mon 2pm /to 4pm
+deadline return book /by 2026-02-15
+event team meeting /from 2026-02-10 /to 2026-02-10
 list
 mark 1
 mark 3
@@ -14,7 +14,7 @@ todo
 deadline
 event
 deadline homework
-event party /from Friday
+event party /from 2026-02-14
 todo   
 blah
 mark

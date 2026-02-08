@@ -20,20 +20,20 @@
 	____________________________________________________________
 
 	> 	 Understood. A new objective is forged:
-	   [D][ ] return book (by: Sunday)
+	   [D][ ] return book (by: Feb 15 2026)
 	 The record shows 3 tasks awaiting your mastery!
 	____________________________________________________________
 
 	> 	 Understood. A new objective is forged:
-	   [E][ ] team meeting (from: Mon 2pm to: 4pm)
+	   [E][ ] team meeting (from: Feb 10 2026 to: Feb 10 2026)
 	 The record shows 4 tasks awaiting your mastery!
 	____________________________________________________________
 
 	> 	 Your campaign stands as follows:
-	 1.[T][ ] read book
-	 2.[T][ ] study for exam
-	 3.[D][ ] return book (by: Sunday)
-	 4.[E][ ] team meeting (from: Mon 2pm to: 4pm)
+	 1. [T][ ] read book
+	 2. [T][ ] study for exam
+	 3. [D][ ] return book (by: Feb 15 2026)
+	 4. [E][ ] team meeting (from: Feb 10 2026 to: Feb 10 2026)
 	____________________________________________________________
 
 	> 	 Strategy realized. This triumph is recorded:
@@ -41,14 +41,14 @@
 	____________________________________________________________
 
 	> 	 Strategy realized. This triumph is recorded:
-	   [D][X] return book (by: Sunday)
+	   [D][X] return book (by: Feb 15 2026)
 	____________________________________________________________
 
 	> 	 Your campaign stands as follows:
-	 1.[T][X] read book
-	 2.[T][ ] study for exam
-	 3.[D][X] return book (by: Sunday)
-	 4.[E][ ] team meeting (from: Mon 2pm to: 4pm)
+	 1. [T][X] read book
+	 2. [T][ ] study for exam
+	 3. [D][X] return book (by: Feb 15 2026)
+	 4. [E][ ] team meeting (from: Feb 10 2026 to: Feb 10 2026)
 	____________________________________________________________
 
 	> 	 Restored. Focus your efforts here once more:
@@ -56,21 +56,21 @@
 	____________________________________________________________
 
 	> 	 Your campaign stands as follows:
-	 1.[T][ ] read book
-	 2.[T][ ] study for exam
-	 3.[D][X] return book (by: Sunday)
-	 4.[E][ ] team meeting (from: Mon 2pm to: 4pm)
+	 1. [T][ ] read book
+	 2. [T][ ] study for exam
+	 3. [D][X] return book (by: Feb 15 2026)
+	 4. [E][ ] team meeting (from: Feb 10 2026 to: Feb 10 2026)
 	____________________________________________________________
 
 	> 	 Struck from the record. The objective is removed:
 	   [T][ ] study for exam
-	 The record shows 3 tasks awaiting your mastery!
+	 The record shows 2 tasks awaiting your mastery!
 	____________________________________________________________
 
 	> 	 Your campaign stands as follows:
-	 1.[T][ ] read book
-	 2.[D][X] return book (by: Sunday)
-	 3.[E][ ] team meeting (from: Mon 2pm to: 4pm)
+	 1. [T][ ] read book
+	 2. [D][X] return book (by: Feb 15 2026)
+	 3. [E][ ] team meeting (from: Feb 10 2026 to: Feb 10 2026)
 	____________________________________________________________
 
 	> 	 Strategy requires detail. A todo must have a defined objective.
@@ -124,10 +124,10 @@
 	____________________________________________________________
 
 	> 	 Your campaign stands as follows:
-	 1.[T][ ] read book
-	 2.[D][X] return book (by: Sunday)
-	 3.[E][ ] team meeting (from: Mon 2pm to: 4pm)
-	 4.[T][ ] final task
+	 1. [T][ ] read book
+	 2. [D][X] return book (by: Feb 15 2026)
+	 3. [E][ ] team meeting (from: Feb 10 2026 to: Feb 10 2026)
+	 4. [T][ ] final task
 	____________________________________________________________
 
 	> 	____________________________________________________________
