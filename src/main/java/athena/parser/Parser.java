@@ -11,6 +11,7 @@ import athena.commands.ExitCommand;
 import athena.commands.FindCommand;
 import athena.commands.ListCommand;
 import athena.commands.MarkCommand;
+import athena.commands.SortCommand;
 import athena.commands.UnmarkCommand;
 import athena.exceptions.AthenaException;
 import athena.exceptions.AthenaInvalidArguments;
@@ -72,6 +73,9 @@ public class Parser {
 
             case FIND:
                 return createFindCommand(arguments);
+
+            case SORT:
+                return new SortCommand();
 
             default:
                 throw AthenaInvalidCommand.invalidCommand();

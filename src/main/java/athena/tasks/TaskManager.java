@@ -78,6 +78,10 @@ public class TaskManager {
      * @return A formatted string containing all tasks or a message if the list is empty.
      */
     public String iterateList() {
+        return this.formatTaskList(tasks);
+    }
+
+    private String formatTaskList(List<Task> tasks) {
         StringBuilder sb = new StringBuilder();
 
         if (tasks.isEmpty()) {
@@ -148,5 +152,29 @@ public class TaskManager {
         return tasks.stream()
             .filter(task -> task.getLabel().toLowerCase().contains(lowerKeyword))
             .toList();
+    }
+
+    /**
+     * Returns a sorted list of tasks by priority.
+     * Tasks are sorted by their dates (deadlines use due date, events use start date).
+     * Tasks without dates (Todos) are sorted to the end using LocalDate.MAX.
+     *
+     * @return A new sorted list of tasks (original list remains unchanged).
+     */
+    public List<Task> sort() {
+        return tasks.stream()
+            .sorted()
+            .toList();
+    }
+
+    /**
+     * Returns a formatted string representation of all tasks sorted by priority.
+     * Tasks are displayed in a numbered list with earlier dates appearing first.
+     * Tasks without dates (Todos) appear at the end of the list.
+     *
+     * @return A formatted string containing sorted tasks or a message if the list is empty.
+     */
+    public String iterateSortedList() {
+        return this.formatTaskList(this.sort());
     }
 }
