@@ -21,6 +21,6 @@ public class ListCommand extends Command {
     @Override
     public int dispatch(TaskManager taskList, Ui ui) {
         ui.showTaskList(taskList.iterateList());
-        return Command.SUCCESS_STATUS_CODE;
+        return Command.STATUS_CODE_SUCCESS;
     }
 }

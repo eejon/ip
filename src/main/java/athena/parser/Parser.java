@@ -61,7 +61,7 @@ public class Parser {
             case TODO:
                 return createTodoCommand(arguments);
 
-            case DEADLINE: 
+            case DEADLINE:
                 return createDeadlineCommand(arguments);
 
             case EVENT:
@@ -106,7 +106,7 @@ public class Parser {
         if (noDescription || noDeadline) {
             throw AthenaInvalidArguments.missingDeadline();
         }
-        
+
         try {
             LocalDate dueDate = LocalDate.parse(args[1].trim(), DATE_FORMAT);
             return new CreateCommand(new Deadline(args[0].trim(), dueDate));

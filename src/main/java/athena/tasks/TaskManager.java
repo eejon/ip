@@ -79,7 +79,7 @@ public class TaskManager {
      */
     public String iterateList() {
         StringBuilder sb = new StringBuilder();
-        
+
         if (tasks.isEmpty()) {
             sb.append("\t The field is clear. Victory is absolute.\n");
             return sb.toString();

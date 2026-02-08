@@ -32,6 +32,6 @@ public class DeleteCommand extends Command {
         Task deleted = taskList.get(this.index);
         taskList.deleteTask(this.index);
         ui.showDeleted(deleted, taskList.size() - 1);
-        return Command.SUCCESS_STATUS_CODE;
+        return Command.STATUS_CODE_SUCCESS;
     }
 }

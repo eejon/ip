@@ -47,7 +47,7 @@ public class Athena {
                 Command command = Parser.parse(input);
                 int statusCode = command.dispatch(this.taskList, this.ui);
 
-                if (statusCode == Command.EXIT_STATUS_CODE) {
+                if (statusCode == Command.STATUS_CODE_EXIT) {
                     break;
                 }
 
@@ -91,7 +91,7 @@ public class Athena {
             Gui gui = new Gui();
             Command command = Parser.parse(input);
             int statusCode = command.dispatch(this.taskList, gui);
-            if (statusCode == Command.EXIT_STATUS_CODE) {
+            if (statusCode == Command.STATUS_CODE_EXIT) {
                 // Handle end program
             }
             return gui.getResponse();

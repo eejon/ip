@@ -8,8 +8,8 @@ import athena.ui.Ui;
  * This is the base class for all commands.
  */
 public abstract class Command {
-    public static final int SUCCESS_STATUS_CODE = 0;
-    public static final int EXIT_STATUS_CODE = 1;
+    public static final int STATUS_CODE_SUCCESS = 0;
+    public static final int STATUS_CODE_EXIT = 1;
     /**
      * Returns the exit code after the command executes.
      * Uses the UI and TaskManager to handle changes to UI and List of tasks.

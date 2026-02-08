@@ -34,6 +34,6 @@ public class FindCommand extends Command {
     public int dispatch(TaskManager taskList, Ui ui) {
         List<Task> foundTasks = taskList.findByKeyword(keyword);
         ui.showFoundTasks(foundTasks, keyword);
-        return Command.SUCCESS_STATUS_CODE;
+        return Command.STATUS_CODE_SUCCESS;
     }
 }

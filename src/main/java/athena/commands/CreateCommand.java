@@ -31,6 +31,6 @@ public class CreateCommand extends Command {
     public int dispatch(TaskManager taskList, Ui ui) {
         taskList.addTask(this.task); // TaskManager adds task
         ui.taskCreated(task, taskList.size()); // UI prints task created message
-        return Command.SUCCESS_STATUS_CODE;
+        return Command.STATUS_CODE_SUCCESS;
     }
 }

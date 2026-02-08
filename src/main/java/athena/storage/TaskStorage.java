@@ -102,7 +102,7 @@ public class TaskStorage {
         // https://stackoverflow.com/questions/5516020/bufferedreader-read-multiple-lines-into-a-single-string
         FileReader fileIn = new FileReader(inputFile);
         BufferedReader bufferIn = new BufferedReader(fileIn);
-        
+
         String line;
         int lineNumber = 1;
         while ((line = bufferIn.readLine()) != null) {
@@ -150,8 +150,8 @@ public class TaskStorage {
         return task;
     }
 
-    private Task createTaskByType(String type, String description, String[] format) 
-        throws AthenaException {
+    private Task createTaskByType(String type, String description, String[] format)
+            throws AthenaException {
         switch(type) {
         case "T":
             return parseTodoTask(description);

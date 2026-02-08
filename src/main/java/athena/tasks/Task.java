@@ -4,10 +4,10 @@ package athena.tasks;
  * A task can be marked as complete or incomplete.
  */
 public abstract class Task {
-    private boolean isCompleted;
-    private String label;
     public static final String STATUS_COMPLETE = "1";
     public static final String STATUS_INCOMPLETE = "0";
+    private boolean isCompleted;
+    private String label;
 
     /**
      * Constructs a new task with the specified label, defaults no description.

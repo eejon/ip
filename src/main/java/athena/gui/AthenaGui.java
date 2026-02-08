@@ -29,13 +29,13 @@ public class AthenaGui extends Application {
             MainWindow controller = fxmlLoader.<MainWindow>getController();
             controller.setAthena(athena);
             controller.showMessage(athena.getGreeting());
-            
+
             try {
                 athena.initialize();
             } catch (AthenaException e) {
                 controller.showMessage(e.getMessage());
             }
-            
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
