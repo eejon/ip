@@ -22,6 +22,7 @@ public class Event extends Task {
      */
     public Event(String description, LocalDate from, LocalDate to) {
         super(description);
+        assert from != null && to != null : "to and from should be valid local dates";
         this.from = from;
         this.to = to;
     }
@@ -47,8 +48,8 @@ public class Event extends Task {
     @Override
     public String toFileFormat() {
         return String.format("E | %s | %s | %s - %s",
-            getStatus() ? "1" : "0",
-            getlabel(),
+            isCompleted() ? Task.STATUS_COMPLETE : Task.STATUS_INCOMPLETE,
+            getLabel(),
             from.format(INPUT_FORMAT),
             to.format(INPUT_FORMAT));
     }

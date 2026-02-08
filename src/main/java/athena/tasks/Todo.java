@@ -33,7 +33,7 @@ public class Todo extends Task {
     @Override
     public String toFileFormat() {
         return String.format("T | %s | %s",
-            getStatus() ? "1" : "0",
-            getlabel());
+            isCompleted() ? Task.STATUS_COMPLETE : Task.STATUS_INCOMPLETE,
+            getLabel());
     }
 }

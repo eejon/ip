@@ -79,7 +79,7 @@ public class TaskStorage {
      */
     public List<Task> loadTasks() throws IOException {
         File file = new File(this.filePath);
-        List<Task> taskList = new ArrayList<>();
+        List<Task> tasks = new ArrayList<>();
 
         // Create directory if it doesn't exist
         File parentDir = file.getParentFile();
@@ -90,19 +90,25 @@ public class TaskStorage {
         // Create file if it doesn't exist
         if (!file.exists()) {
             file.createNewFile();
-            return taskList; // Return empty list for new file
+            return tasks; // Return empty list for new file
         }
 
-        // Read tasks from file
+        // Read and process tasks from file
+        tasks = processFileData(file, tasks);
+        return tasks;
+    }
+
+    private List<Task> processFileData(File inputFile, List<Task> tasks) throws IOException {
         // https://stackoverflow.com/questions/5516020/bufferedreader-read-multiple-lines-into-a-single-string
-        FileReader fileIn = new FileReader(file);
+        FileReader fileIn = new FileReader(inputFile);
         BufferedReader bufferIn = new BufferedReader(fileIn);
+        
         String line;
         int lineNumber = 1;
         while ((line = bufferIn.readLine()) != null) {
             try {
                 Task task = parseTask(line.trim());
-                taskList.add(task);
+                tasks.add(task);
                 lineNumber++;
             } catch (AthenaException e) {
                 // Log corrupted line but continue loading other tasks
@@ -111,7 +117,7 @@ public class TaskStorage {
             }
         }
         bufferIn.close();
-        return taskList;
+        return tasks;
     }
 
     /**
@@ -135,55 +141,74 @@ public class TaskStorage {
 
         Task task;
 
-        switch (type) {
+        // Create task by type
+        task = createTaskByType(type, description, format);
+
+        // Set completion status
+        setTaskStatus(task, status);
+
+        return task;
+    }
+
+    private Task createTaskByType(String type, String description, String[] format) 
+        throws AthenaException {
+        switch(type) {
         case "T":
-            if (format.length != 3) {
-                throw AthenaInvalidFormat.invalidTodoFormat();
-            }
-            task = new Todo(description);
-            break;
-
+            return parseTodoTask(description);
         case "D":
-            if (format.length != 4) {
-                throw AthenaInvalidFormat.invalidDeadlineFormat();
-            }
-            try {
-                LocalDate dueDate = LocalDate.parse(format[3].trim(), DATE_FORMAT);
-                task = new Deadline(description, dueDate);
-            } catch (DateTimeParseException e) {
-                throw AthenaInvalidDate.invalidDate();
-            }
-            break;
-
+            return parseDeadlineTask(format, description);
         case "E":
-            if (format.length != 4) {
-                throw AthenaInvalidFormat.invalidEventFormat();
-            }
-            String[] duration = format[3].split(" - ");
-            if (duration.length < 2) {
-                throw AthenaInvalidFormat.invalidEventFormat();
-            }
-            try {
-                LocalDate from = LocalDate.parse(duration[0].trim(), DATE_FORMAT);
-                LocalDate to = LocalDate.parse(duration[1].trim(), DATE_FORMAT);
-                task = new Event(description, from, to);
-            } catch (DateTimeParseException e) {
-                throw AthenaInvalidDate.invalidDate();
-            }
-            break;
-
+            return parseEventTask(format, description);
         default:
             throw new AthenaException("\t The tapestry is frayed; this record is lost to chaos.");
         }
+    }
 
-        // Set completion status
-        if (status.equals("1")) {
-            task.markDone();
-        } else if (!status.equals("0")) {
-            throw new AthenaException("Invalid status value: " + status);
+    private Task parseTodoTask(String description) throws AthenaException {
+        if (description.trim().isEmpty()) {
+            throw AthenaInvalidFormat.invalidTodoFormat();
+        }
+        return new Todo(description);
+    }
+
+    private Task parseDeadlineTask(String[] format, String description) throws AthenaException {
+        if (format.length != 4) {
+            throw AthenaInvalidFormat.invalidDeadlineFormat();
         }
 
-        return task;
+        try {
+            LocalDate dueDate = LocalDate.parse(format[3].trim(), DATE_FORMAT);
+            return new Deadline(description, dueDate);
+        } catch (DateTimeParseException e) {
+            throw AthenaInvalidDate.invalidDate();
+        }
+    }
+
+    private Task parseEventTask(String[] format, String description) throws AthenaException {
+        if (format.length != 4) {
+            throw AthenaInvalidFormat.invalidEventFormat();
+        }
+
+        String[] duration = format[3].split(" - ");
+        if (duration.length < 2) {
+            throw AthenaInvalidFormat.invalidEventFormat();
+        }
+
+        try {
+            LocalDate from = LocalDate.parse(duration[0].trim(), DATE_FORMAT);
+            LocalDate to = LocalDate.parse(duration[1].trim(), DATE_FORMAT);
+            return new Event(description, from, to);
+        } catch (DateTimeParseException e) {
+            throw AthenaInvalidDate.invalidDate();
+        }
+    }
+
+    private void setTaskStatus(Task task, String status) throws AthenaException {
+        if (status.equals(Task.STATUS_COMPLETE)) {
+            task.markDone();
+        } else if (!status.equals(Task.STATUS_INCOMPLETE)) { // Expect status to only be 1 or 0
+            throw new AthenaException("Invalid status value: " + status);
+        }
     }
 
 }

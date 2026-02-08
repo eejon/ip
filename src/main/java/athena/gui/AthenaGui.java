@@ -3,6 +3,7 @@ package athena.gui;
 import java.io.IOException;
 
 import athena.Athena;
+import athena.exceptions.AthenaException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,13 +25,17 @@ public class AthenaGui extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+
             MainWindow controller = fxmlLoader.<MainWindow>getController();
             controller.setAthena(athena);
             controller.showMessage(athena.getGreeting());
-            String initError = athena.initialize();
-            if (initError != null) {
-                controller.showMessage(initError);
+            
+            try {
+                athena.initialize();
+            } catch (AthenaException e) {
+                controller.showMessage(e.getMessage());
             }
+            
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
