@@ -40,6 +40,7 @@ public class Event extends Task {
     }
 
     /**
+     * {@inheritDoc}
      * Returns a string representation of this event task in file storage format.
      * Format: E | status | description | yyyy-MM-dd-yyyy-MM-dd
      *
@@ -52,5 +53,10 @@ public class Event extends Task {
             getLabel(),
             from.format(INPUT_FORMAT),
             to.format(INPUT_FORMAT));
+    }
+
+    @Override
+    protected LocalDate getTaskDate() {
+        return this.to;
     }
 }

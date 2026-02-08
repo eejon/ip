@@ -1,9 +1,11 @@
 package athena.tasks;
+
+import java.time.LocalDate;
 /**
  * Represents a task with a label, and completion status.
  * A task can be marked as complete or incomplete.
  */
-public abstract class Task {
+public abstract class Task implements Comparable<Task> {
     public static final String STATUS_COMPLETE = "1";
     public static final String STATUS_INCOMPLETE = "0";
     private boolean isCompleted;
@@ -67,5 +69,34 @@ public abstract class Task {
         return "[" + getStatusIcon() + "] " + label;
     }
 
+    /**
+     * Returns a string representation of a task in file storage format.
+     * Format: [TYPE] | status | description | yyyy-MM-dd-yyyy-MM-dd
+     * Subclasses should implement this with their respective formats.
+     *
+     * @return String representation for file storage.
+     */
     public abstract String toFileFormat();
+
+    /**
+     * Returns the date to use for sorting this task.
+     * Subclasses should implement this to return the relevant date
+     * (e.g., due date for Deadline, start date for Event, LocalDate.MAX for Todo).
+     *
+     * @return The date used for sorting priority.
+     */
+    protected abstract LocalDate getTaskDate();
+
+    /**
+     * Compares this task with another task for ordering by date.
+     * Tasks are ordered by their dates, with earlier dates coming first.
+     * This enables natural sorting using Collections.sort() or stream.sorted().
+     *
+     * @param other The task to compare to.
+     * @return Negative if this task comes before other, positive if after, zero if equal.
+     */
+    @Override
+    public int compareTo(Task other) {
+        return getTaskDate().compareTo(other.getTaskDate());
+    }
 }

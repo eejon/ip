@@ -36,6 +36,7 @@ public class Deadline extends Task {
     }
 
     /**
+     * {@inheritDoc}
      * Returns a string representation of this deadline task in file storage format.
      * Format: D | status | description | yyyy-MM-dd
      *
@@ -47,6 +48,11 @@ public class Deadline extends Task {
             isCompleted() ? Task.STATUS_COMPLETE : Task.STATUS_INCOMPLETE,
             getLabel(),
             dueDate.format(INPUT_FORMAT));
+    }
+
+    @Override
+    protected LocalDate getTaskDate() {
+        return this.dueDate;
     }
 
 }
