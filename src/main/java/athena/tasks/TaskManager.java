@@ -143,14 +143,10 @@ public class TaskManager {
      * @return A list of tasks containing the keyword.
      */
     public List<Task> findByKeyword(String keyword) {
-        List<Task> foundTasks = new ArrayList<>();
         String lowerKeyword = keyword.toLowerCase();
 
-        for (Task task : tasks) {
-            if (task.getLabel().toLowerCase().contains(lowerKeyword)) {
-                foundTasks.add(task);
-            }
-        }
-        return foundTasks;
+        return tasks.stream()
+            .filter(task -> task.getLabel().toLowerCase().contains(lowerKeyword))
+            .toList();
     }
 }
