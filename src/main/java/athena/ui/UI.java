@@ -79,6 +79,7 @@ public class Ui {
      * @param task The task that was marked as complete.
      */
     public void markComplete(Task task) {
+        assert task != null : "task should not be null";
         System.out.println("\t Strategy realized. This triumph is recorded:");
         System.out.printf("\t   %s\n", task);
     }
@@ -89,6 +90,7 @@ public class Ui {
      * @param task The task that was marked as incomplete.
      */
     public void markIncomplete(Task task) {
+        assert task != null : "task should not be null";
         System.out.println("\t Restored. Focus your efforts here once more:");
         System.out.printf("\t   %s\n", task);
     }
@@ -100,6 +102,8 @@ public class Ui {
      * @param length The number of tasks in the list.
      */
     public void taskCreated(Task task, int length) {
+        assert task != null : "task should not be null";
+        assert length >= 0 : "length of the List<Task> should be at least 0";
         System.out.println("\t Understood. A new objective is forged:");
         System.out.printf("\t   %s\n", task);
         System.out.printf("\t The record shows %d tasks awaiting your mastery!\n", length);
@@ -137,6 +141,7 @@ public class Ui {
      * @param length The number of tasks in the list.
      */
     public void showDeleted(Task task, int length) {
+        assert task != null : "task should not be null";
         System.out.println("\t Struck from the record. The objective is removed:");
         System.out.printf("\t   %s\n", task);
         System.out.printf("\t The record shows %d tasks awaiting your mastery!\n", length);

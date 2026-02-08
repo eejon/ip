@@ -31,6 +31,7 @@ public class TaskManager {
      */
     public TaskManager(TaskStorage storage) {
         this.tasks = new ArrayList<>();
+        assert storage != null : "Storage should not be null";
         this.storage = storage;
     }
 
