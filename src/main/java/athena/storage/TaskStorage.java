@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import athena.exceptions.AthenaException;
 import athena.exceptions.AthenaInvalidDate;
@@ -61,12 +62,10 @@ public class TaskStorage {
         }
 
         FileWriter writer = new FileWriter(file);
-        StringBuilder sb = new StringBuilder();
-        for (Task task : data) {
-            sb.append(task.toFileFormat());
-            sb.append("\n");
-        }
-        writer.write(sb.toString().trim());
+        String content = data.stream()
+            .map(task -> task.toFileFormat())
+            .collect(Collectors.joining("\n"));
+        writer.write(content.trim());
         writer.close();
     }
 
