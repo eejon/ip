@@ -34,10 +34,10 @@ public class Athena {
      */
     public void run() {
         ui.printGreeting();
-
-        String result = initialize();
-        if (result != null) {
-            ui.showError(result);
+        try {
+            initialize();
+        } catch (AthenaException e) {
+            ui.showError(e.getMessage());
         }
 
         while (true) {
@@ -46,8 +46,8 @@ public class Athena {
 
                 Command command = Parser.parse(input);
                 int statusCode = command.dispatch(this.taskList, this.ui);
-                assert statusCode == 0 || statusCode == 1 : "status code must be 0 (success) or 1 (exit)";
-                if (statusCode == 1) {
+
+                if (statusCode == Command.EXIT_STATUS_CODE) {
                     break;
                 }
 
@@ -91,7 +91,7 @@ public class Athena {
             Gui gui = new Gui();
             Command command = Parser.parse(input);
             int statusCode = command.dispatch(this.taskList, gui);
-            if (statusCode == 1) {
+            if (statusCode == Command.EXIT_STATUS_CODE) {
                 // Handle end program
             }
             return gui.getResponse();
@@ -123,13 +123,12 @@ public class Athena {
     /**
      * Loads the task list from local storage
      */
-    public String initialize() {
+    public void initialize() throws AthenaException {
         // Load tasks once at startup
         try {
             this.taskList.loadTasks();
-            return null;
         } catch (IOException e) {
-            return "Error loading tasks: " + e.getMessage();
+            throw new AthenaException("A cloud obscures the battlefield! I cannot retrieve your scrolls at this time.");
         }
     }
 }

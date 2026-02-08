@@ -31,6 +31,6 @@ public class UnmarkCommand extends Command {
     public int dispatch(TaskManager taskList, Ui ui) {
         taskList.unmarkTask(this.index);
         ui.markIncomplete(taskList.get(this.index));
-        return 0;
+        return Command.SUCCESS_STATUS_CODE;
     }
 }

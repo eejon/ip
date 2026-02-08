@@ -6,6 +6,8 @@ package athena.tasks;
 public abstract class Task {
     private boolean isCompleted;
     private String label;
+    public static final String STATUS_COMPLETE = "1";
+    public static final String STATUS_INCOMPLETE = "0";
 
     /**
      * Constructs a new task with the specified label, defaults no description.
@@ -18,15 +20,15 @@ public abstract class Task {
         this.isCompleted = false;
     }
 
-    public String getlabel() {
+    public String getLabel() {
         return this.label;
     }
 
-    public boolean getStatus() {
+    public boolean isCompleted() {
         return this.isCompleted;
     }
 
-    public void changelabel(String newlabel) {
+    public void changeLabel(String newlabel) {
         this.label = newlabel;
     }
 

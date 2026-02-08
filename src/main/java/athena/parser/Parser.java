@@ -59,49 +59,19 @@ public class Parser {
                 return new UnmarkCommand(Integer.parseInt(arguments) - 1);
 
             case TODO:
-                // No arguments
-                if (arguments.isEmpty()) {
-                    throw AthenaInvalidArguments.missingDesciption();
-                }
-                return new CreateCommand(new Todo(arguments));
-            case DEADLINE: {
-                String[] args = arguments.split(" /by ");
-                // No arguments or no deadline
-                if (args.length < 2 || args[0].trim().isEmpty() || args[1].trim().isEmpty()) {
-                    throw AthenaInvalidArguments.missingDeadline();
-                }
-                try {
-                    LocalDate dueDate = LocalDate.parse(args[1].trim(), DATE_FORMAT);
-                    return new CreateCommand(new Deadline(args[0].trim(), dueDate));
-                } catch (DateTimeParseException e) {
-                    throw AthenaInvalidDate.invalidDate();
-                }
-            }
+                return createTodoCommand(arguments);
 
-            case EVENT: {
-                String[] args = arguments.split(" /from | /to ");
-                // No arguments or no from/to
-                if (args.length < 3 || args[0].trim().isEmpty() || args[1].trim().isEmpty()
-                    || args[2].trim().isEmpty()) {
-                    throw AthenaInvalidArguments.missingEvent();
-                }
-                try {
-                    LocalDate from = LocalDate.parse(args[1].trim(), DATE_FORMAT);
-                    LocalDate to = LocalDate.parse(args[2].trim(), DATE_FORMAT);
-                    return new CreateCommand(new Event(args[0].trim(), from, to));
-                } catch (DateTimeParseException e) {
-                    throw AthenaInvalidDate.invalidDate();
-                }
-            }
+            case DEADLINE: 
+                return createDeadlineCommand(arguments);
+
+            case EVENT:
+                return createEventCommand(arguments);
 
             case DELETE:
                 return new DeleteCommand(Integer.parseInt(arguments) - 1);
 
             case FIND:
-                if (arguments.isEmpty()) {
-                    throw AthenaInvalidArguments.missingKeyword();
-                }
-                return new FindCommand(arguments.trim());
+                return createFindCommand(arguments);
 
             default:
                 throw AthenaInvalidCommand.invalidCommand();
@@ -112,5 +82,68 @@ public class Parser {
         } catch (IllegalArgumentException e) {
             throw AthenaInvalidCommand.invalidCommand();
         }
+    }
+
+    private static Command createTodoCommand(String arguments) throws AthenaException {
+        // No arguments
+        if (arguments.isEmpty()) {
+            throw AthenaInvalidArguments.missingDesciption();
+        }
+        return new CreateCommand(new Todo(arguments));
+    }
+
+    private static Command createDeadlineCommand(String arguments) throws AthenaException {
+        String[] args = arguments.split(" /by ");
+        // No arguments
+        boolean insufficientArgs = args.length < 2;
+        if (insufficientArgs) {
+            throw AthenaInvalidArguments.missingDeadline();
+        }
+
+        // No description or deadline
+        boolean noDescription = args[0].trim().isEmpty();
+        boolean noDeadline = args[1].trim().isEmpty();
+        if (noDescription || noDeadline) {
+            throw AthenaInvalidArguments.missingDeadline();
+        }
+        
+        try {
+            LocalDate dueDate = LocalDate.parse(args[1].trim(), DATE_FORMAT);
+            return new CreateCommand(new Deadline(args[0].trim(), dueDate));
+        } catch (DateTimeParseException e) {
+            throw AthenaInvalidDate.invalidDate();
+        }
+    }
+
+    private static Command createEventCommand(String arguments) throws AthenaException {
+        String[] args = arguments.split(" /from | /to ");
+        // No arguments
+        boolean insufficientArgs = args.length < 3;
+        if (insufficientArgs) {
+            throw AthenaInvalidArguments.missingEvent();
+        }
+
+        // No description/from/to
+        boolean noDescription = args[0].trim().isEmpty();
+        boolean noFromDate = args[1].trim().isEmpty();
+        boolean noToDate = args[2].trim().isEmpty();
+        if (noDescription || noFromDate || noToDate) {
+            throw AthenaInvalidArguments.missingEvent();
+        }
+
+        try {
+            LocalDate from = LocalDate.parse(args[1].trim(), DATE_FORMAT);
+            LocalDate to = LocalDate.parse(args[2].trim(), DATE_FORMAT);
+            return new CreateCommand(new Event(args[0].trim(), from, to));
+        } catch (DateTimeParseException e) {
+            throw AthenaInvalidDate.invalidDate();
+        }
+    }
+
+    private static Command createFindCommand(String arguments) throws AthenaException {
+        if (arguments.isEmpty()) {
+            throw AthenaInvalidArguments.missingKeyword();
+        }
+        return new FindCommand(arguments.trim());
     }
 }
