@@ -20,6 +20,7 @@ public class Deadline extends Task {
      */
     public Deadline(String description, LocalDate dueDate) {
         super(description);
+        assert dueDate != null : "dueDate should be valid date";
         this.dueDate = dueDate;
     }
 

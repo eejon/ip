@@ -46,7 +46,7 @@ public class Athena {
 
                 Command command = Parser.parse(input);
                 int statusCode = command.dispatch(this.taskList, this.ui);
-
+                assert statusCode == 0 || statusCode == 1 : "status code must be 0 (success) or 1 (exit)";
                 if (statusCode == 1) {
                     break;
                 }
