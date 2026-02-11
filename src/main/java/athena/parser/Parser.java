@@ -138,6 +138,10 @@ public class Parser {
         try {
             LocalDate from = LocalDate.parse(args[1].trim(), DATE_FORMAT);
             LocalDate to = LocalDate.parse(args[2].trim(), DATE_FORMAT);
+            if (from.isAfter(to)) {
+                throw AthenaInvalidDate.invalidDateRange();
+            }
+
             return new CreateCommand(new Event(args[0].trim(), from, to));
         } catch (DateTimeParseException e) {
             throw AthenaInvalidDate.invalidDate();
