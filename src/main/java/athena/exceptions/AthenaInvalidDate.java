@@ -7,7 +7,7 @@ package athena.exceptions;
 public class AthenaInvalidDate extends AthenaException {
     /* Class level constant error messages */
     private static final String INVALID_DATE =
-        "\t Chronos rejects this entry. Chronos enforces yyyy-MM-dd.";
+        "\t The fates do not recognize this date. Speak in the tongue of yyyy-MM-dd.";
 
     private AthenaInvalidDate(String message) {
         super(message);

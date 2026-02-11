@@ -51,7 +51,7 @@ public class Ui {
      */
     public void printGreeting() {
         StringBuilder sb = new StringBuilder(LINE_BREAK).append(LOGO).append(LINE_BREAK);
-        sb.append("\n\t Geetings. I am Athena 🦉.\n\t Which path leads us to victory today? 👑\n").append(LINE_BREAK);
+        sb.append("\n\t Greetings. I am Athena 🦉.\n\t Which path leads us to victory today? 👑\n").append(LINE_BREAK);
         System.out.println(sb);
     }
 
@@ -67,10 +67,30 @@ public class Ui {
     /**
      * Prints all items in the list of tasks to stdout.
      *
-     * @param listString The formatted string of the list of tasks.
+     * @param tasks The list of tasks
      */
-    public void showTaskList(String listString) {
-        System.out.print(listString);
+    public void showTaskList(List<Task> tasks) {
+        showTaskList(tasks, "\t Your campaign stands as follows:");
+    }
+
+    /**
+     * Prints all items in the sorted list of tasks to stdout.
+     *
+     * @param tasks The sorted lists of tasks
+     */
+    public void showSortedTaskList(List<Task> tasks) {
+        showTaskList(tasks, "\t By my wisdom, your campaign prioritized:");
+    }
+
+    private void showTaskList(List<Task> tasks, String header) {
+        if (tasks.isEmpty()) {
+            System.out.println("\t The field is clear. Victory is absolute.");
+        } else {
+            System.out.println(header);
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.println(String.format("\t %d. %s\n", i + 1, tasks.get(i)));
+            }
+        }
     }
 
     /**
@@ -159,7 +179,7 @@ public class Ui {
         } else {
             System.out.println("\t I have scoured the scrolls. Here is the knowledge you seek:");
             for (int i = 0; i < tasks.size(); i++) {
-                System.out.printf("\t %d.%s\n", i + 1, tasks.get(i));
+                System.out.printf("\t %d. %s\n", i + 1, tasks.get(i));
             }
         }
     }

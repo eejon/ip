@@ -72,28 +72,12 @@ public class TaskManager {
     }
 
     /**
-     * Returns a formatted string representation of all tasks in the list.
-     * Displays a numbered list of tasks with their current status.
+     * Returns list of tasks.
      *
-     * @return A formatted string containing all tasks or a message if the list is empty.
+     * @return A copy of the list of tasks.
      */
-    public String iterateList() {
-        return this.formatTaskList(tasks);
-    }
-
-    private String formatTaskList(List<Task> tasks) {
-        StringBuilder sb = new StringBuilder();
-
-        if (tasks.isEmpty()) {
-            sb.append("\t The field is clear. Victory is absolute.\n");
-            return sb.toString();
-        }
-
-        sb.append("\t Your campaign stands as follows:\n");
-        for (int i = 0; i < tasks.size(); i++) {
-            sb.append(String.format("\t %d. %s\n", i + 1, tasks.get(i)));
-        }
-        return sb.toString();
+    public List<Task> getTasks() {
+        return new ArrayList<>(this.tasks); // maintains immutability
     }
 
     /**
@@ -165,16 +149,5 @@ public class TaskManager {
         return tasks.stream()
             .sorted()
             .toList();
-    }
-
-    /**
-     * Returns a formatted string representation of all tasks sorted by priority.
-     * Tasks are displayed in a numbered list with earlier dates appearing first.
-     * Tasks without dates (Todos) appear at the end of the list.
-     *
-     * @return A formatted string containing sorted tasks or a message if the list is empty.
-     */
-    public String iterateSortedList() {
-        return this.formatTaskList(this.sort());
     }
 }

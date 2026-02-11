@@ -43,26 +43,42 @@ public class Gui extends Ui {
     }
 
     @Override
-    public void showTaskList(String listString) {
-        reply.append(listString);
+    public void showTaskList(List<Task> tasks) {
+        showTaskList(tasks, "Your campaign stands as follows:\n");
+    }
+
+    @Override
+    public void showSortedTaskList(List<Task> tasks) {
+        showTaskList(tasks, "By my wisdom, your campaign prioritized:\n");
+    }
+
+    private void showTaskList(List<Task> tasks, String header) {
+        if (tasks.isEmpty()) {
+            reply.append("The field is clear. Victory is absolute.\n");
+        } else {
+            reply.append(header);
+            for (int i = 0; i < tasks.size(); i++) {
+                reply.append(String.format("%d. %s\n", i + 1, tasks.get(i)));
+            }
+        }
     }
 
     @Override
     public void markComplete(Task task) {
-        reply.append("Strategy realized. This triumph is recorded:");
-        reply.append(String.format("   %s\n", task));
+        reply.append("Strategy realized. This triumph is recorded:\n");
+        reply.append(String.format("%s\n", task));
     }
 
     @Override
     public void markIncomplete(Task task) {
-        reply.append("Restored. Focus your efforts here once more:");
-        reply.append(String.format("   %s\n", task));
+        reply.append("Restored. Focus your efforts here once more:\n");
+        reply.append(String.format("%s\n", task));
     }
 
     @Override
     public void taskCreated(Task task, int length) {
-        reply.append("Understood. A new objective is forged:");
-        reply.append(String.format("   %s\n", task));
+        reply.append("Understood. A new objective is forged:\n");
+        reply.append(String.format("%s\n", task));
         reply.append(String.format("The record shows %d tasks awaiting your mastery!\n", length));
     }
 
@@ -85,8 +101,8 @@ public class Gui extends Ui {
 
     @Override
     public void showDeleted(Task task, int length) {
-        reply.append("Struck from the record. The objective is removed:");
-        reply.append(String.format("   %s\n", task));
+        reply.append("Struck from the record. The objective is removed:\n");
+        reply.append(String.format("%s\n", task));
         reply.append(String.format("The record shows %d tasks awaiting your mastery!\n", length));
     }
 
@@ -95,9 +111,9 @@ public class Gui extends Ui {
         if (tasks.isEmpty()) {
             reply.append("The archives reveal no tasks containing \"").append(keyword).append("\".");
         } else {
-            reply.append("I have scoured the scrolls. Here is the knowledge you seek:");
+            reply.append("I have scoured the scrolls. Here is the knowledge you seek:\n");
             for (int i = 0; i < tasks.size(); i++) {
-                reply.append(String.format("%d.\t%s\n", i + 1, tasks.get(i)));
+                reply.append(String.format("%d. %s\n", i + 1, tasks.get(i)));
             }
         }
     }
