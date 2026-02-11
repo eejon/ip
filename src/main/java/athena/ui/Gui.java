@@ -46,29 +46,45 @@ public class Gui extends Ui {
     }
 
     @Override
-    public void showTaskList(String listString) {
-        message.append(listString);
+    public void showTaskList(List<Task> tasks) {
+        showTaskList(tasks, "Your campaign stands as follows:\n");
+    }
+
+    private void showTaskList(List<Task> tasks, String header) {
+        if (tasks.isEmpty()) {
+            message.append("The field is clear. Victory is absolute.\n");
+        } else {
+            message.append(header);
+            for (int i = 0; i < tasks.size(); i++) {
+                message.append(String.format("%d. %s\n", i + 1, tasks.get(i)));
+            }
+        }
         reply = Response.standard(message.toString().trim());
     }
 
     @Override
+    public void showSortedTaskList(List<Task> tasks) {
+        showTaskList(tasks, "By my wisdom, your campaign prioritized:\n");
+    }
+
+    @Override
     public void markComplete(Task task) {
-        message.append("Strategy realized. This triumph is recorded:");
-        message.append(String.format("   %s\n", task));
+        message.append("Strategy realized. This triumph is recorded:\n");
+        message.append(String.format("%s\n", task));
         reply = Response.success(message.toString().trim());
     }
 
     @Override
     public void markIncomplete(Task task) {
-        message.append("Restored. Focus your efforts here once more:");
-        message.append(String.format("   %s\n", task));
+        message.append("Restored. Focus your efforts here once more:\n");
+        message.append(String.format("%s\n", task));
         reply = Response.success(message.toString().trim());
     }
 
     @Override
     public void taskCreated(Task task, int length) {
-        message.append("Understood. A new objective is forged:");
-        message.append(String.format("   %s\n", task));
+        message.append("Understood. A new objective is forged:\n");
+        message.append(String.format("%s\n", task));
         message.append(String.format("The record shows %d tasks awaiting your mastery!\n", length));
         reply = Response.success(message.toString().trim());
     }
@@ -95,8 +111,8 @@ public class Gui extends Ui {
 
     @Override
     public void showDeleted(Task task, int length) {
-        message.append("Struck from the record. The objective is removed:");
-        message.append(String.format("   %s\n", task));
+        message.append("Struck from the record. The objective is removed:\n");
+        message.append(String.format("%s\n", task));
         message.append(String.format("The record shows %d tasks awaiting your mastery!\n", length));
         reply = Response.success(message.toString().trim());
     }
@@ -106,9 +122,9 @@ public class Gui extends Ui {
         if (tasks.isEmpty()) {
             message.append("The archives reveal no tasks containing \"").append(keyword).append("\".");
         } else {
-            message.append("I have scoured the scrolls. Here is the knowledge you seek:");
+            message.append("I have scoured the scrolls. Here is the knowledge you seek:\n");
             for (int i = 0; i < tasks.size(); i++) {
-                message.append(String.format("%d.\t%s\n", i + 1, tasks.get(i)));
+                message.append(String.format("%d. %s\n", i + 1, tasks.get(i)));
             }
         }
         reply = Response.standard(message.toString().trim());
