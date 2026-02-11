@@ -35,20 +35,20 @@ public class Gui extends Ui {
     public void printGreeting() {
         message.append("Greetings. I am Athena 🦉.\n");
         message.append("Which path leads us to victory today? 👑");
-        reply = Response.success(message.toString().trim());
+        reply = Response.standard(message.toString().trim());
     }
 
     @Override
     public void printExit() {
         message.append("Strategy never rests. I shall remain here, watchful.\n");
         message.append("\t\t\t\t\t\t\t\t~Athena 🦉");
-        reply = Response.success(message.toString().trim());
+        reply = Response.standard(message.toString().trim());
     }
 
     @Override
     public void showTaskList(String listString) {
         message.append(listString);
-        reply = Response.success(message.toString().trim());
+        reply = Response.standard(message.toString().trim());
     }
 
     @Override
@@ -111,7 +111,7 @@ public class Gui extends Ui {
                 message.append(String.format("%d.\t%s\n", i + 1, tasks.get(i)));
             }
         }
-        reply = Response.success(message.toString().trim());
+        reply = Response.standard(message.toString().trim());
     }
 
 }

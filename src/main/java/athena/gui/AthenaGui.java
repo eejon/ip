@@ -25,6 +25,7 @@ public class AthenaGui extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+            stage.setTitle("Athena");
 
             MainWindow controller = fxmlLoader.<MainWindow>getController();
             controller.setAthena(athena);

@@ -56,6 +56,7 @@ public class MainWindow extends AnchorPane {
         Response response = athena.getResponse(input);
         String message = response.getMessage();
         boolean isError = response.isError();
+        boolean isSuccess = response.isSuccess();
 
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage)
@@ -64,6 +65,10 @@ public class MainWindow extends AnchorPane {
         if (isError) {
             dialogContainer.getChildren().addAll(
                     DialogBox.getErrorDialog(message.trim(), athenaImage)
+            );
+        } else if (isSuccess) {
+            dialogContainer.getChildren().addAll(
+                    DialogBox.getSuccessDialog(message.trim(), athenaImage)
             );
         } else {
             dialogContainer.getChildren().addAll(
