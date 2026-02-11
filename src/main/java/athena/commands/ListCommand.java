@@ -20,7 +20,7 @@ public class ListCommand extends Command {
      */
     @Override
     public int dispatch(TaskManager taskList, Ui ui) {
-        ui.showTaskList(taskList.iterateList());
+        ui.showTaskList(taskList.getTasks());
         return Command.STATUS_CODE_SUCCESS;
     }
 }
