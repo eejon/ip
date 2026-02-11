@@ -73,15 +73,6 @@ public class Ui {
         showTaskList(tasks, "\t Your campaign stands as follows:");
     }
 
-    /**
-     * Prints all items in the sorted list of tasks to stdout.
-     *
-     * @param tasks The sorted lists of tasks
-     */
-    public void showSortedTaskList(List<Task> tasks) {
-        showTaskList(tasks, "\t By my wisdom, your campaign prioritized:");
-    }
-
     private void showTaskList(List<Task> tasks, String header) {
         if (tasks.isEmpty()) {
             System.out.println("\t The field is clear. Victory is absolute.");
@@ -91,6 +82,15 @@ public class Ui {
                 System.out.println(String.format("\t %d. %s\n", i + 1, tasks.get(i)));
             }
         }
+    }
+
+    /**
+     * Prints all items in the sorted list of tasks to stdout.
+     *
+     * @param tasks The sorted lists of tasks
+     */
+    public void showSortedTaskList(List<Task> tasks) {
+        showTaskList(tasks, "\t By my wisdom, your campaign prioritized:");
     }
 
     /**

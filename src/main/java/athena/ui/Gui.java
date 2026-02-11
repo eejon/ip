@@ -47,11 +47,6 @@ public class Gui extends Ui {
         showTaskList(tasks, "Your campaign stands as follows:\n");
     }
 
-    @Override
-    public void showSortedTaskList(List<Task> tasks) {
-        showTaskList(tasks, "By my wisdom, your campaign prioritized:\n");
-    }
-
     private void showTaskList(List<Task> tasks, String header) {
         if (tasks.isEmpty()) {
             reply.append("The field is clear. Victory is absolute.\n");
@@ -61,6 +56,11 @@ public class Gui extends Ui {
                 reply.append(String.format("%d. %s\n", i + 1, tasks.get(i)));
             }
         }
+    }
+
+    @Override
+    public void showSortedTaskList(List<Task> tasks) {
+        showTaskList(tasks, "By my wisdom, your campaign prioritized:\n");
     }
 
     @Override

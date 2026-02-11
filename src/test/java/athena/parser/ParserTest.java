@@ -71,7 +71,7 @@ public class ParserTest {
             Parser.parse("deadline return book /by 1 Jan");
         });
 
-        String expectedMessage = "\t Chronos rejects this entry. Chronos enforces yyyy-MM-dd.";
+        String expectedMessage = "\t The fates do not recognize this date. Speak in the tongue of yyyy-MM-dd.";
         String actual = exception.getMessage();
 
         assertEquals(expectedMessage, actual);
@@ -101,7 +101,7 @@ public class ParserTest {
             Parser.parse("event meeting /from 2019-12-02 /to 31 jan");
         });
 
-        String expectedMessage = "\t Chronos rejects this entry. Chronos enforces yyyy-MM-dd.";
+        String expectedMessage = "\t The fates do not recognize this date. Speak in the tongue of yyyy-MM-dd.";
         String actual = exception.getMessage();
 
         assertEquals(expectedMessage, actual);
