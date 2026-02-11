@@ -48,3 +48,17 @@
 .avatar {
     -fx-effect: dropshadow(gaussian, rgba(30, 33, 36, 0.5), 6, 0.4, 0, 2);
 }
+
+.error-bubble {
+    -fx-background-color: #D32F2F;  /* Red for errors */
+    -fx-background-radius: 15 15 15 5;
+    -fx-effect: dropshadow(gaussian, rgba(211, 47, 47, 0.6), 10, 0.5, 0, 3);
+    -fx-padding: 6px 12px;
+}
+
+.error-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Cinzel";
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}

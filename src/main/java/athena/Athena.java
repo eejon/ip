@@ -8,6 +8,7 @@ import athena.parser.Parser;
 import athena.storage.TaskStorage;
 import athena.tasks.TaskManager;
 import athena.ui.Gui;
+import athena.ui.Response;
 import athena.ui.Ui;
 /**
  * The main entry point of the Athena chatbot application.
@@ -86,7 +87,7 @@ public class Athena {
     /**
      * Generates a response for the user's chat message.
      */
-    public String getResponse(String input) {
+    public Response getResponse(String input) {
         try {
             Gui gui = new Gui();
             Command command = Parser.parse(input);
@@ -98,15 +99,15 @@ public class Athena {
 
         } catch (IndexOutOfBoundsException e) {
 
-            return AthenaException.indexOutOfBoundsError();
+            return Response.error(AthenaException.indexOutOfBoundsError());
 
         } catch (NumberFormatException e) {
 
-            return AthenaException.nanError(e.getMessage());
+            return Response.error(AthenaException.nanError(e.getMessage()));
 
         } catch (AthenaException e) {
 
-            return e.getMessage();
+            return Response.error(e.getMessage());
 
         }
     }
@@ -114,7 +115,7 @@ public class Athena {
     /**
      * Returns the greeting message specifically for the GUI
      */
-    public String getGreeting() {
+    public Response getGreeting() {
         Gui gui = new Gui();
         gui.printGreeting();
         return gui.getResponse();

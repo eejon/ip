@@ -28,7 +28,7 @@ public class AthenaGui extends Application {
 
             MainWindow controller = fxmlLoader.<MainWindow>getController();
             controller.setAthena(athena);
-            controller.showMessage(athena.getGreeting());
+            controller.showMessage(athena.getGreeting().getMessage());
 
             try {
                 athena.initialize();
