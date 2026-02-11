@@ -1,6 +1,7 @@
 package athena.gui;
 
 import athena.Athena;
+import athena.ui.Response;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -52,12 +53,29 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
-        String response = athena.getResponse(input);
+        Response response = athena.getResponse(input);
+        String message = response.getMessage();
+        boolean isError = response.isError();
+        boolean isSuccess = response.isSuccess();
 
         dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getAthenaDialog(response.trim(), athenaImage)
+                DialogBox.getUserDialog(input, userImage)
         );
+
+        if (isError) {
+            dialogContainer.getChildren().addAll(
+                    DialogBox.getErrorDialog(message.trim(), athenaImage)
+            );
+        } else if (isSuccess) {
+            dialogContainer.getChildren().addAll(
+                    DialogBox.getSuccessDialog(message.trim(), athenaImage)
+            );
+        } else {
+            dialogContainer.getChildren().addAll(
+                    DialogBox.getAthenaDialog(message.trim(), athenaImage)
+            );
+        }
+
         userInput.clear();
     }
 

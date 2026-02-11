@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 
 /**
  * Represents a dialog box consisting of an ImageView to represent the speaker's face
@@ -44,6 +45,10 @@ public class DialogBox extends HBox {
 
         dialog.setText(text);
         displayPicture.setImage(img);
+
+        // Make avatar circular with rounded clip
+        Circle clip = new Circle(27.5, 27.5, 27.5);
+        displayPicture.setClip(clip);
     }
 
     /**
@@ -74,6 +79,28 @@ public class DialogBox extends HBox {
         db.dialogBubble.getStyleClass().add("athena-bubble");
         db.dialog.getStyleClass().add("athena-label");
         db.flip();
+        return db;
+    }
+
+    /**
+     * Creates an error dialog with error styling.
+     */
+    public static DialogBox getErrorDialog(String text, Image img) {
+        var db = new DialogBox(text, img);
+        db.flip();
+        db.dialogBubble.getStyleClass().add("error-bubble");
+        db.dialog.getStyleClass().add("error-label");
+        return db;
+    }
+
+    /**
+     * Creates a success dialog with success styling.
+     */
+    public static DialogBox getSuccessDialog(String text, Image img) {
+        var db = new DialogBox(text, img);
+        db.flip();
+        db.dialogBubble.getStyleClass().add("success-bubble");
+        db.dialog.getStyleClass().add("success-label");
         return db;
     }
 }
