@@ -99,8 +99,8 @@ public class Parser {
     private static Command createDeadlineCommand(String arguments) throws AthenaException {
         String[] args = arguments.split(" /by ");
         // No arguments
-        boolean insufficientArgs = args.length < 2;
-        if (insufficientArgs) {
+        boolean hasInsufficientArgs = args.length < 2;
+        if (hasInsufficientArgs) {
             throw AthenaInvalidArguments.missingDeadline();
         }
 
@@ -122,8 +122,8 @@ public class Parser {
     private static Command createEventCommand(String arguments) throws AthenaException {
         String[] args = arguments.split(" /from | /to ");
         // No arguments
-        boolean insufficientArgs = args.length < 3;
-        if (insufficientArgs) {
+        boolean hasInsufficientArgs = args.length < 3;
+        if (hasInsufficientArgs) {
             throw AthenaInvalidArguments.missingEvent();
         }
 
