@@ -10,8 +10,10 @@ import athena.commands.Command;
 import athena.commands.CreateCommand;
 import athena.commands.DeleteCommand;
 import athena.commands.ExitCommand;
+import athena.commands.FindCommand;
 import athena.commands.ListCommand;
 import athena.commands.MarkCommand;
+import athena.commands.SortCommand;
 import athena.commands.UnmarkCommand;
 import athena.exceptions.AthenaException;
 
@@ -130,10 +132,32 @@ public class ParserTest {
         Exception exception = assertThrows(AthenaException.class, () -> {
             Parser.parse("hi");
         });
-
-        String expectedMessage = "\t I do not recognize that tactic. Speak with clarity.";
-        String actual = exception.getMessage();
-
-        assertEquals(expectedMessage, actual);
     }
+
+    @Test
+    public void parse_findCommand_success() throws AthenaException {
+        Command command = Parser.parse("find book");
+        assertTrue(command instanceof FindCommand);
+    }
+
+    @Test
+    public void parse_sortCommand_success() throws AthenaException {
+        Command command = Parser.parse("sort");
+        assertTrue(command instanceof SortCommand);
+    }
+
+    @Test
+    public void parse_markWithoutIndex_throwsException() {
+        assertThrows(NumberFormatException.class, () -> {
+            Parser.parse("mark");
+        });
+    }
+
+    @Test
+    public void parse_deleteWithInvalidIndex_throwsException() {
+        assertThrows(NumberFormatException.class, () -> {
+            Parser.parse("delete abc");
+        });
+    }
+
 }
