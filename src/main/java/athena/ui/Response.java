@@ -8,11 +8,19 @@ public class Response {
     private String message;
     private boolean isSuccess;
     private boolean isError;
+    private boolean shouldExit;
 
     private Response(String message, boolean isError, boolean isSuccess) {
         this.message = message;
         this.isError = isError;
         this.isSuccess = isSuccess;
+    }
+
+    private Response(String message, boolean isError, boolean isSuccess, boolean shouldExit) {
+        this.message = message;
+        this.isError = isError;
+        this.isSuccess = isSuccess;
+        this.shouldExit = shouldExit;
     }
 
     /**
@@ -70,5 +78,13 @@ public class Response {
      */
     public boolean isSuccess() {
         return this.isSuccess;
+    }
+
+    public Response exit() {
+        return new Response(this.message, this.isError, this.isSuccess, true);
+    }
+
+    public boolean shouldExit() {
+        return this.shouldExit;
     }
 }

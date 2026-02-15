@@ -35,44 +35,38 @@ public class Athena {
      */
     public void run() {
         ui.printGreeting();
+
         try {
             initialize();
-        } catch (AthenaException e) {
-            ui.showError(e.getMessage());
-        }
 
-        while (true) {
-            try {
+            while (true) {
                 String input = ui.readInput();
-
                 Command command = Parser.parse(input);
                 int statusCode = command.dispatch(this.taskList, this.ui);
-
                 if (statusCode == Command.STATUS_CODE_EXIT) {
                     break;
                 }
-
-            } catch (IOException e) {
-
-                this.ui.showError(e.getMessage());
-
-            } catch (IndexOutOfBoundsException e) {
-
-                this.ui.showIndexOutOfBoundsError();
-
-            } catch (NumberFormatException e) {
-
-                ui.showNanError(e.getMessage());
-
-            } catch (AthenaException e) {
-
-                ui.showError(e.getMessage());
-
-            } finally {
-
-                ui.printLine();
-
             }
+        } catch (AthenaException e) {
+
+            ui.showError(e.getMessage());
+
+        } catch (IOException e) {
+
+            this.ui.showError(e.getMessage());
+
+        } catch (IndexOutOfBoundsException e) {
+
+            this.ui.showIndexOutOfBoundsError();
+
+        } catch (NumberFormatException e) {
+
+            this.ui.showNanError(e.getMessage());
+
+        } finally {
+
+            ui.printLine();
+
         }
     }
 
@@ -92,10 +86,11 @@ public class Athena {
             Gui gui = new Gui();
             Command command = Parser.parse(input);
             int statusCode = command.dispatch(this.taskList, gui);
+            Response response = gui.getResponse();
             if (statusCode == Command.STATUS_CODE_EXIT) {
-                // Handle end program
+                response = response.exit();
             }
-            return gui.getResponse();
+            return response;
 
         } catch (IndexOutOfBoundsException e) {
 

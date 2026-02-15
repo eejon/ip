@@ -20,6 +20,9 @@ import javafx.scene.shape.Circle;
  * and a label containing text from the speaker.
  */
 public class DialogBox extends HBox {
+    private final double PROFILE_RADIUS = 27.5;
+    private final double WIDTH_MULTIPLIER = 0.7;
+    private final int WIDTH_TRIM_LENGTH = 20; 
     @FXML
     private Label dialog;
     @FXML
@@ -34,9 +37,9 @@ public class DialogBox extends HBox {
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
 
-            dialogBubble.maxWidthProperty().bind(this.widthProperty().multiply(0.7));
+            dialogBubble.maxWidthProperty().bind(this.widthProperty().multiply(WIDTH_MULTIPLIER));
 
-            dialog.maxWidthProperty().bind(dialogBubble.maxWidthProperty().subtract(20));
+            dialog.maxWidthProperty().bind(dialogBubble.maxWidthProperty().subtract(WIDTH_TRIM_LENGTH));
             dialog.setWrapText(true);
 
         } catch (IOException e) {
@@ -47,7 +50,7 @@ public class DialogBox extends HBox {
         displayPicture.setImage(img);
 
         // Make avatar circular with rounded clip
-        Circle clip = new Circle(27.5, 27.5, 27.5);
+        Circle clip = new Circle(PROFILE_RADIUS, PROFILE_RADIUS, PROFILE_RADIUS);
         displayPicture.setClip(clip);
     }
 

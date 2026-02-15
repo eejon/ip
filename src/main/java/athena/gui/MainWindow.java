@@ -2,6 +2,9 @@ package athena.gui;
 
 import athena.Athena;
 import athena.ui.Response;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -9,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 /**
  * Main GUI window for the Athena application.
@@ -57,6 +61,7 @@ public class MainWindow extends AnchorPane {
         String message = response.getMessage();
         boolean isError = response.isError();
         boolean isSuccess = response.isSuccess();
+        boolean shouldExit = response.shouldExit();
 
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage)
@@ -76,6 +81,10 @@ public class MainWindow extends AnchorPane {
             );
         }
 
+        if (shouldExit) {
+            startShutdownCountdown(5);
+        }
+
         userInput.clear();
     }
 
@@ -88,5 +97,25 @@ public class MainWindow extends AnchorPane {
         dialogContainer.getChildren().add(
             DialogBox.getAthenaDialog(message, athenaImage)
         );
+    }
+
+    // Reference: https://stackoverflow.com/questions/77445754/countdown-timer-java-javafx
+    private void startShutdownCountdown(int seconds) {
+        userInput.setDisable(true);
+        sendButton.setDisable(true);
+
+        final int[] remaining = { seconds };
+        userInput.setText("Closing in " + remaining[0]);
+
+        Timeline countdown = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            remaining[0]--;
+            if (remaining[0] > 0) {
+                userInput.setText("Closing in " + remaining[0]);
+            } else {
+                Platform.exit();
+            }
+        }));
+        countdown.setCycleCount(seconds);
+        countdown.play();
     }
 }
