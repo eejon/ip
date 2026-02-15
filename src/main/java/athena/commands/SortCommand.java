@@ -20,7 +20,7 @@ public class SortCommand extends Command {
      */
     @Override
     public int dispatch(TaskManager taskList, Ui ui) {
-        ui.showTaskList(taskList.sort());
+        ui.showSortedTaskList(taskList.sort());
         return STATUS_CODE_SUCCESS;
     }
 }
