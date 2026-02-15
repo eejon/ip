@@ -41,6 +41,7 @@ You can interact with _**Athena**_ through a <u>Graphical User Interface (GUI)</
    ```
 
 5. A GUI should appear in a few seconds with Athena's greeting message.
+[!ui](./UI.png)
 
 6. Type a command in the command box and press Enter to execute it.
    - Example: typing `list` and pressing Enter will display all your tasks.
@@ -319,5 +320,10 @@ Strategy never rests. I shall remain here, watchful.
 
 ## Credits
 
+### Documentation
 - User Guide format inspired by [AddressBook Level-3](https://se-education.org/addressbook-level3/UserGuide.html)
 - [GitHub Flavored Markdown](https://github.github.com/gfm/) for documentation formatting
+
+### Images
+- **Athena profile image** (`DaAthena.png`): [iStock - Athena the Goddess](https://www.istockphoto.com/vector/premium-athena-the-goddess-black-gm1317103878-404633825)
+- **User profile image** (`DaUser.png`): [UXWing - Man User Circle Icon](https://uxwing.com/man-user-circle-icon/)
