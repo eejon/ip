@@ -99,7 +99,7 @@ public class MainWindow extends AnchorPane {
         );
     }
 
-    // Reference: https://stackoverflow.com/questions/77445754/countdown-timer-java-javafx
+    // Solution below adapted from https://stackoverflow.com/questions/77445754/countdown-timer-java-javafx
     private void startShutdownCountdown(int seconds) {
         userInput.setDisable(true);
         sendButton.setDisable(true);
