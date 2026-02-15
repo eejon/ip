@@ -14,10 +14,10 @@ import athena.storage.TaskStorage;
 
 public class TaskManagerTest {
     // Test Double
-    static class FakeStorage extends TaskStorage {
-        List<Task> savedTasks = new ArrayList<>();
-        boolean canSave = true;
-        
+    private static class FakeStorage extends TaskStorage {
+        private List<Task> savedTasks = new ArrayList<>();
+        private boolean canSave = true;
+
         @Override
         public void saveTasks(List<Task> data) throws IOException {
             if (!canSave) {

@@ -20,9 +20,9 @@ import javafx.scene.shape.Circle;
  * and a label containing text from the speaker.
  */
 public class DialogBox extends HBox {
-    private final double PROFILE_RADIUS = 27.5;
-    private final double WIDTH_MULTIPLIER = 0.7;
-    private final int WIDTH_TRIM_LENGTH = 20; 
+    private static final double PROFILE_RADIUS = 27.5;
+    private static final double WIDTH_MULTIPLIER = 0.7;
+    private static final int WIDTH_TRIM_LENGTH = 20;
     @FXML
     private Label dialog;
     @FXML

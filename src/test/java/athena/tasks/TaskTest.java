@@ -10,10 +10,6 @@ import org.junit.jupiter.api.Test;
 
 
 public class TaskTest {
-    // Test toTaskFormat
-    // Test toString
-    // test markDone
-    // test markNotDone
     @Test
     public void equals_sameTasks_returnTrue() {
         Task task1 = new Todo("read book");
@@ -68,7 +64,7 @@ public class TaskTest {
         Todo todo = new Todo("read book");
         assertEquals("T | 0 | read book", todo.toFileFormat());
     }
-    
+
     @Test
     public void toFileFormat_markedDeadline() {
         Deadline deadline = new Deadline("return book", LocalDate.of(2026, 2, 15));
@@ -87,7 +83,7 @@ public class TaskTest {
         Todo todo = new Todo("read book");
         assertEquals("[T][ ] read book", todo.toString());
     }
-    
+
     @Test
     public void toString_markedTask() {
         Todo todo = new Todo("read book");

@@ -62,16 +62,16 @@ public class Event extends Task {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) { 
+        if (this == o) {
             return true;
         }
         if (!(o instanceof Event)) {
             return false;
         }
         Event event = (Event) o;
-        return this.isCompleted() == event.isCompleted() &&
-                this.getLabel().equals(event.getLabel()) &&
-                this.from.equals(event.from) &&
-                this.to.equals(event.to);
+        return this.isCompleted() == event.isCompleted()
+                && this.getLabel().equals(event.getLabel())
+                && this.from.equals(event.from)
+                && this.to.equals(event.to);
     }
 }

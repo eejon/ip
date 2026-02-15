@@ -64,8 +64,8 @@ public class Deadline extends Task {
             return false;
         }
         Deadline deadline = (Deadline) o;
-        return this.isCompleted() == deadline.isCompleted() &&
-                this.getLabel().equals(deadline.getLabel()) &&
-                this.dueDate.equals(deadline.dueDate);
+        return this.isCompleted() == deadline.isCompleted()
+                && this.getLabel().equals(deadline.getLabel())
+                && this.dueDate.equals(deadline.dueDate);
     }
 }

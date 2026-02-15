@@ -109,7 +109,7 @@ public abstract class Task implements Comparable<Task> {
             return false;
         }
         Task task = (Task) o;
-        return this.isCompleted == task.isCompleted &&
-                this.label.equals(task.label);
+        return this.isCompleted == task.isCompleted
+                && this.label.equals(task.label);
     }
 }
