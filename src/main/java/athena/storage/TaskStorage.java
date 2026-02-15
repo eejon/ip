@@ -98,7 +98,8 @@ public class TaskStorage {
         return tasks;
     }
 
-    // Solution below inspired by https://stackoverflow.com/questions/5516020/bufferedreader-read-multiple-lines-into-a-single-string
+    // Solution below inspired by
+    // https://stackoverflow.com/questions/5516020/bufferedreader-read-multiple-lines-into-a-single-string
     private List<Task> processFileData(File inputFile, List<Task> tasks) throws IOException {
         FileReader fileIn = new FileReader(inputFile);
         BufferedReader bufferIn = new BufferedReader(fileIn);

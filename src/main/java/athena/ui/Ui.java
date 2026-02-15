@@ -79,7 +79,7 @@ public class Ui {
         } else {
             System.out.println(header);
             for (int i = 0; i < tasks.size(); i++) {
-                System.out.println(String.format("\t %d. %s\n", i + 1, tasks.get(i)));
+                System.out.println(String.format("\t %d. %s", i + 1, tasks.get(i)));
             }
         }
     }
