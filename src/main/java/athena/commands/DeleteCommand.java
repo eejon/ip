@@ -31,7 +31,7 @@ public class DeleteCommand extends Command {
     public int dispatch(TaskManager taskList, Ui ui) throws IndexOutOfBoundsException {
         Task deleted = taskList.get(this.index);
         taskList.deleteTask(this.index);
-        ui.showDeleted(deleted, taskList.size() - 1);
+        ui.showDeleted(deleted, taskList.size());
         return Command.STATUS_CODE_SUCCESS;
     }
 }
