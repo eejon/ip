@@ -109,11 +109,12 @@ public class TaskStorage {
             try {
                 Task task = parseTask(line.trim());
                 tasks.add(task);
-                lineNumber++;
             } catch (AthenaException e) {
                 // Log corrupted line but continue loading other tasks
                 System.err.println("\t By the gods! I have never seen such disorder on line "
                     + lineNumber + ": " + e.getMessage());
+            } finally {
+                lineNumber++;
             }
         }
         bufferIn.close();
