@@ -38,35 +38,30 @@ public class Athena {
 
         try {
             initialize();
+        } catch (AthenaException e) {
+            ui.showError(e.getMessage());
+            return;
+        }
 
-            while (true) {
+        while (true) {
+            try {
                 String input = ui.readInput();
                 Command command = Parser.parse(input);
                 int statusCode = command.dispatch(this.taskList, this.ui);
                 if (statusCode == Command.STATUS_CODE_EXIT) {
                     break;
                 }
+            } catch (AthenaException e) {
+                ui.showError(e.getMessage());
+            } catch (IOException e) {
+                this.ui.showError(e.getMessage());
+            } catch (IndexOutOfBoundsException e) {
+                this.ui.showIndexOutOfBoundsError();
+            } catch (NumberFormatException e) {
+                this.ui.showNanError(e.getMessage());
+            } finally {
+                ui.printLine();
             }
-        } catch (AthenaException e) {
-
-            ui.showError(e.getMessage());
-
-        } catch (IOException e) {
-
-            this.ui.showError(e.getMessage());
-
-        } catch (IndexOutOfBoundsException e) {
-
-            this.ui.showIndexOutOfBoundsError();
-
-        } catch (NumberFormatException e) {
-
-            this.ui.showNanError(e.getMessage());
-
-        } finally {
-
-            ui.printLine();
-
         }
     }
 
