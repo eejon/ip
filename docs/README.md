@@ -41,7 +41,7 @@ You can interact with _**Athena**_ through a <u>Graphical User Interface (GUI)</
    ```
 
 5. A GUI should appear in a few seconds with Athena's greeting message.
-[!ui](./UI.png)
+![ui](./images/UI.png)
 
 6. Type a command in the command box and press Enter to execute it.
    - Example: typing `list` and pressing Enter will display all your tasks.

@@ -82,7 +82,7 @@ public class MainWindow extends AnchorPane {
         }
 
         if (shouldExit) {
-            startShutdownCountdown(5);
+            startShutdownCountdown(3);
         }
 
         userInput.clear();
