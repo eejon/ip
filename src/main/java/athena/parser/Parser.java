@@ -79,7 +79,6 @@ public class Parser {
 
             default:
                 throw AthenaInvalidCommand.invalidCommand();
-
             }
         } catch (NumberFormatException e) {
             throw new NumberFormatException(arguments);

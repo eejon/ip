@@ -59,4 +59,19 @@ public class Event extends Task {
     protected LocalDate getTaskDate() {
         return this.to;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) { 
+            return true;
+        }
+        if (!(o instanceof Event)) {
+            return false;
+        }
+        Event event = (Event) o;
+        return this.isCompleted() == event.isCompleted() &&
+                this.getLabel().equals(event.getLabel()) &&
+                this.from.equals(event.from) &&
+                this.to.equals(event.to);
+    }
 }

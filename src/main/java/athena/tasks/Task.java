@@ -30,8 +30,8 @@ public abstract class Task implements Comparable<Task> {
         return this.isCompleted;
     }
 
-    public void changeLabel(String newlabel) {
-        this.label = newlabel;
+    public void changeLabel(String newLabel) {
+        this.label = newLabel;
     }
 
     /**
@@ -98,5 +98,18 @@ public abstract class Task implements Comparable<Task> {
     @Override
     public int compareTo(Task other) {
         return getTaskDate().compareTo(other.getTaskDate());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Task)) {
+            return false;
+        }
+        Task task = (Task) o;
+        return this.isCompleted == task.isCompleted &&
+                this.label.equals(task.label);
     }
 }

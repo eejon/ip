@@ -55,4 +55,17 @@ public class Deadline extends Task {
         return this.dueDate;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Deadline)) {
+            return false;
+        }
+        Deadline deadline = (Deadline) o;
+        return this.isCompleted() == deadline.isCompleted() &&
+                this.getLabel().equals(deadline.getLabel()) &&
+                this.dueDate.equals(deadline.dueDate);
+    }
 }
