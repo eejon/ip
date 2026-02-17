@@ -112,8 +112,8 @@ public class TaskStorage {
                 tasks.add(task);
             } catch (AthenaException e) {
                 // Log corrupted line but continue loading other tasks
-                System.err.println("\t By the gods! I have never seen such disorder on line "
-                    + lineNumber + ": " + e.getMessage());
+                System.err.println("By the gods! I have never seen such disorder on line "
+                    + lineNumber + ":\n" + e.getMessage());
             } finally {
                 lineNumber++;
             }
@@ -199,6 +199,9 @@ public class TaskStorage {
         try {
             LocalDate from = LocalDate.parse(duration[0].trim(), DATE_FORMAT);
             LocalDate to = LocalDate.parse(duration[1].trim(), DATE_FORMAT);
+            if (from.isAfter(to)) {
+                throw AthenaInvalidDate.invalidDateRange();
+            }
             return new Event(description, from, to);
         } catch (DateTimeParseException e) {
             throw AthenaInvalidDate.invalidDate();
