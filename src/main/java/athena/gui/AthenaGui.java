@@ -37,6 +37,8 @@ public class AthenaGui extends Application {
                 controller.showMessage(e.getMessage());
             }
 
+            stage.setMinWidth(400);
+            stage.setMinHeight(600);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
