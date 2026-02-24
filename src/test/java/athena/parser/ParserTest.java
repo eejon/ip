@@ -132,6 +132,10 @@ public class ParserTest {
         Exception exception = assertThrows(AthenaException.class, () -> {
             Parser.parse("hi");
         });
+        String expectedMessage = "\t I do not recognize that tactic. Speak with clarity.";
+        String actual = exception.getMessage();
+
+        assertEquals(expectedMessage, actual);
     }
 
     @Test
